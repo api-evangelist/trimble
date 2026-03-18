@@ -1,0 +1,18 @@
+aid: trimble
+url: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/apis.yml
+apis:
+- aid: trimble:trimble-api
+  name: Trimble Ag / Positioning API
+  tags:
+  - Agriculture
+  - Precision Ag
+  - GPS
+  - Positioning
+  image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
+  humanURL: https://www.trimble.com/
+  baseURL: https://api.trimble.example.com
+  properties:
+  - url: https://www.trimble.com/
+    type: Documentation
+  description: >-
+    Trimble provides precision agriculture and positioning technology APIs. APIs enable access to field mapping data, guidance lines, as-applied maps, variable rate prescriptions, and GNSS positioning data for agricultural operations and fleet management.
