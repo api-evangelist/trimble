@@ -1,6 +1,72 @@
 aid: trimble
 url: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/apis.yml
 apis:
+- aid: trimble:trimble-connect-api
+  name: Trimble Connect API
+  tags:
+  - Construction
+  - Collaboration
+  - BIM
+  - Cloud
+  image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
+  humanURL: https://www.trimble.com/en/developer/docs
+  baseURL: https://app.connect.trimble.com/tc/api
+  properties:
+  - url: https://www.trimble.com/en/developer/docs
+    type: Documentation
+  description: >-
+    The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, and team collaboration features for construction project management.
+
+- aid: trimble:trimble-maps-api
+  name: Trimble Maps API
+  tags:
+  - Mapping
+  - Transportation
+  - Routing
+  - Geospatial
+  image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
+  humanURL: https://www.trimble.com/en/developer/docs
+  baseURL: https://maps.trimble.com/api
+  properties:
+  - url: https://www.trimble.com/en/developer/docs
+    type: Documentation
+  description: >-
+    The Trimble Maps API provides interactive mapping and routing solutions optimized for commercial vehicles and transportation. Enables truck-specific routing, geocoding, map rendering, and turn-by-turn navigation services.
+
+- aid: trimble:trimble-pc-miler-api
+  name: Trimble PC*MILER API
+  tags:
+  - Transportation
+  - Routing
+  - Logistics
+  - Distance Calculation
+  image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
+  humanURL: https://www.trimble.com/en/developer/docs
+  baseURL: https://pcmiler.alk.com/apis
+  properties:
+  - url: https://www.trimble.com/en/developer/docs
+    type: Documentation
+  description: >-
+    PC*MILER provides commercial vehicle routing and distance calculation APIs for logistics, freight, and transportation management. Delivers mileage, routing, tolls, and fuel optimization for trucking operations across North America, Europe, and global markets.
+
+- aid: trimble:trimble-identity-api
+  name: Trimble Identity API
+  tags:
+  - Authentication
+  - OAuth
+  - Identity
+  - SSO
+  image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
+  humanURL: https://www.trimble.com/en/developer/docs
+  baseURL: https://id.trimble.com
+  properties:
+  - url: https://www.trimble.com/en/developer/docs
+    type: Documentation
+  - url: https://www.trimble.com/en/developer/docs
+    type: Authentication
+  description: >-
+    Trimble Identity is the centralized authentication service for Trimble platform APIs. Provides OAuth 2.0 identity and access management for users and applications across Trimble's developer ecosystem.
+
 - aid: trimble:trimble-api
   name: Trimble Ag / Positioning API
   tags:
@@ -9,10 +75,32 @@ apis:
   - GPS
   - Positioning
   image: https://raw.githubusercontent.com/api-evangelist/trimble/refs/heads/main/image.png
-  humanURL: https://www.trimble.com/
+  humanURL: https://www.trimble.com/en/developer/docs
   baseURL: https://api.trimble.example.com
   properties:
-  - url: https://www.trimble.com/
+  - url: https://www.trimble.com/en/developer/docs
     type: Documentation
   description: >-
     Trimble provides precision agriculture and positioning technology APIs. APIs enable access to field mapping data, guidance lines, as-applied maps, variable rate prescriptions, and GNSS positioning data for agricultural operations and fleet management.
+
+common:
+- url: https://www.trimble.com/
+  type: Website
+- url: https://www.trimble.com/en/developer
+  type: Portal
+- url: https://www.trimble.com/en/developer/docs
+  type: Documentation
+- url: https://www.trimble.com/en/developer/docs
+  type: GettingStarted
+- url: https://www.trimble.com/legal/developer-terms
+  type: TermsOfService
+- url: https://www.trimble.com/our-commitment/responsible-business/data-privacy-and-security/data-privacy-center/privacy-notice
+  type: PrivacyPolicy
+- url: https://github.com/trimble-oss
+  type: GitHubOrganization
+
+maintainers:
+- name: Kin Lane
+  email: kin@apievangelist.com
+
+modified: '2026-03-18'
