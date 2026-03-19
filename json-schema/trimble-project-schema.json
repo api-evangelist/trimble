@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://app.connect.trimble.com/schemas/project",
+  "title": "Trimble Connect Project",
+  "description": "A construction or engineering project in Trimble Connect",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique project identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Project name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Project description"
+    },
+    "status": {
+      "type": "string",
+      "enum": ["ACTIVE", "ARCHIVED", "DELETED"],
+      "description": "Project status"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["CONSTRUCTION", "INFRASTRUCTURE", "ENGINEERING", "OTHER"],
+      "description": "Project type"
+    },
+    "location": {
+      "type": "string",
+      "description": "Project physical location"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "createdBy": {
+      "type": "string",
+      "description": "User ID who created the project"
+    },
+    "thumbnail": {
+      "type": "string",
+      "format": "uri",
+      "description": "Project thumbnail image URL"
+    },
+    "memberCount": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "fileCount": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "required": ["id", "name", "status"]
+}

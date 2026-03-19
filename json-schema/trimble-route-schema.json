@@ -1,0 +1,197 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://pcmiler.alk.com/schemas/route",
+  "title": "Trimble PC*MILER Route",
+  "description": "A commercial vehicle route calculated by Trimble PC*MILER",
+  "type": "object",
+  "properties": {
+    "totalMiles": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total route distance in miles"
+    },
+    "totalHours": {
+      "type": "number",
+      "minimum": 0,
+      "description": "Total estimated drive time in hours"
+    },
+    "routeType": {
+      "type": "string",
+      "enum": ["Practical", "Shortest", "Fastest", "Tolls", "Avoid53"],
+      "description": "Route optimization method"
+    },
+    "vehicleType": {
+      "type": "string",
+      "enum": ["Truck", "LightTruck", "Auto", "Motorcycle"]
+    },
+    "vehicleParameters": {
+      "$ref": "#/$defs/VehicleParameters"
+    },
+    "stops": {
+      "type": "array",
+      "description": "Ordered list of route stops",
+      "minItems": 2,
+      "items": {
+        "$ref": "#/$defs/RouteStop"
+      }
+    },
+    "legs": {
+      "type": "array",
+      "description": "Individual route legs between consecutive stops",
+      "items": {
+        "$ref": "#/$defs/RouteLeg"
+      }
+    },
+    "tolls": {
+      "$ref": "#/$defs/TollSummary"
+    },
+    "fuelCost": {
+      "type": "number",
+      "description": "Estimated fuel cost in USD"
+    },
+    "directions": {
+      "type": "array",
+      "description": "Turn-by-turn directions",
+      "items": {
+        "$ref": "#/$defs/DirectionStep"
+      }
+    }
+  },
+  "required": ["totalMiles", "totalHours", "stops"],
+  "$defs": {
+    "VehicleParameters": {
+      "type": "object",
+      "properties": {
+        "height": {
+          "type": "number",
+          "description": "Vehicle height in feet"
+        },
+        "weight": {
+          "type": "number",
+          "description": "Gross vehicle weight in pounds"
+        },
+        "length": {
+          "type": "number",
+          "description": "Vehicle length in feet"
+        },
+        "width": {
+          "type": "number",
+          "description": "Vehicle width in feet"
+        },
+        "hazmat": {
+          "type": "string",
+          "enum": ["None", "General", "Explosive", "InhalationHazard", "Radioactive", "Flammable", "Corrosive", "Oxidizer", "Poisonous"]
+        },
+        "axles": {
+          "type": "integer",
+          "minimum": 2,
+          "maximum": 9
+        }
+      }
+    },
+    "RouteStop": {
+      "type": "object",
+      "properties": {
+        "address": {
+          "type": "string",
+          "description": "Formatted address of the stop"
+        },
+        "city": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "zip": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        },
+        "stopType": {
+          "type": "string",
+          "enum": ["Origin", "Waypoint", "Destination"]
+        }
+      }
+    },
+    "RouteLeg": {
+      "type": "object",
+      "properties": {
+        "legMiles": {
+          "type": "number"
+        },
+        "legHours": {
+          "type": "number"
+        },
+        "origin": {
+          "$ref": "#/$defs/RouteStop"
+        },
+        "destination": {
+          "$ref": "#/$defs/RouteStop"
+        }
+      }
+    },
+    "TollSummary": {
+      "type": "object",
+      "properties": {
+        "totalCost": {
+          "type": "number",
+          "description": "Total toll cost in USD"
+        },
+        "currency": {
+          "type": "string",
+          "default": "USD"
+        },
+        "tollRoads": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "roadName": {
+                "type": "string"
+              },
+              "cost": {
+                "type": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "DirectionStep": {
+      "type": "object",
+      "properties": {
+        "direction": {
+          "type": "string",
+          "description": "Turn instruction text"
+        },
+        "distance": {
+          "type": "number",
+          "description": "Distance to next step in miles"
+        },
+        "driveTime": {
+          "type": "string",
+          "description": "Drive time formatted string (HH:MM)"
+        },
+        "roadName": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "latitude": {
+          "type": "number"
+        },
+        "longitude": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}

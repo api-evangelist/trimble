@@ -1,0 +1,377 @@
+openapi: 3.1.0
+info:
+  title: Trimble Maps API
+  description: >-
+    The Trimble Maps API (formerly ALK Technologies PC*MILER) provides interactive
+    mapping and routing solutions optimized for commercial vehicles and transportation.
+    Enables truck-specific routing, geocoding, map tile rendering, and turn-by-turn
+    navigation services across North America, Europe, and global markets.
+  version: "2.0"
+  contact:
+    name: Trimble Maps Developer Support
+    url: https://maps.trimble.com
+servers:
+  - url: https://pcmiler.alk.com/apis/rest/v1.0
+    description: Trimble PC*MILER API v1 (North America)
+  - url: https://maps.trimble.com/api/v1
+    description: Trimble Maps API v1
+
+security:
+  - ApiKeyHeader: []
+
+tags:
+  - name: Routing
+    description: Route calculation and optimization
+  - name: Geocoding
+    description: Address and coordinate conversion
+  - name: Maps
+    description: Map tile and imagery services
+  - name: Places
+    description: Points of interest and place lookup
+
+paths:
+  /Service.svc/route:
+    get:
+      operationId: calculateRoute
+      summary: Calculate a route between stops
+      description: >-
+        Calculates an optimized route for commercial vehicles between multiple stops.
+        Returns mileage, drive time, toll costs, and turn-by-turn directions optimized
+        for truck dimensions, weight, and hazmat restrictions.
+      tags:
+        - Routing
+      parameters:
+        - name: stops
+          in: query
+          required: true
+          description: >-
+            Semicolon-delimited list of stops in "City,State" or lat/lng format.
+            Example: "Dallas,TX;Chicago,IL;Detroit,MI"
+          schema:
+            type: string
+          example: "Dallas,TX;Chicago,IL"
+        - name: vehicleType
+          in: query
+          schema:
+            type: string
+            enum: [Truck, LightTruck, Auto, Motorcycle]
+            default: Truck
+        - name: routeType
+          in: query
+          schema:
+            type: string
+            enum: [Practical, Shortest, Fastest, Tolls, Avoid53]
+            default: Practical
+          description: Routing optimization type
+        - name: height
+          in: query
+          schema:
+            type: number
+          description: Vehicle height in feet
+          example: 13.5
+        - name: weight
+          in: query
+          schema:
+            type: number
+          description: Vehicle weight in pounds
+          example: 80000
+        - name: length
+          in: query
+          schema:
+            type: number
+          description: Vehicle length in feet
+          example: 53
+        - name: hazmat
+          in: query
+          schema:
+            type: string
+            enum: [None, General, Explosive, InhalationHazard, Radioactive, Flammable, Corrosive, Oxidizer, Poisonous]
+            default: None
+        - name: reportType
+          in: query
+          schema:
+            type: string
+            enum: [Mileage, Directions, DriveTimeTable, Detail]
+            default: Mileage
+        - name: outputFormat
+          in: query
+          schema:
+            type: string
+            enum: [json, xml]
+            default: json
+      responses:
+        '200':
+          description: Route calculation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid API key
+
+  /Service.svc/mileage:
+    get:
+      operationId: getMileage
+      summary: Get mileage between stops
+      description: >-
+        Returns the calculated mileage and driving time between stops using
+        PC*MILER routing logic. Supports both practical (highway-preferred) and
+        shortest routing for commercial vehicles.
+      tags:
+        - Routing
+      parameters:
+        - name: stops
+          in: query
+          required: true
+          schema:
+            type: string
+          example: "Dallas,TX;Houston,TX"
+        - name: vehicleType
+          in: query
+          schema:
+            type: string
+            enum: [Truck, LightTruck, Auto]
+            default: Truck
+        - name: routeType
+          in: query
+          schema:
+            type: string
+            enum: [Practical, Shortest]
+            default: Practical
+        - name: outputFormat
+          in: query
+          schema:
+            type: string
+            enum: [json, xml]
+            default: json
+      responses:
+        '200':
+          description: Mileage results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MileageResponse'
+
+  /Service.svc/geocode:
+    get:
+      operationId: geocodeAddress
+      summary: Geocode an address
+      description: >-
+        Converts a street address or city/state/zip to geographic coordinates
+        using Trimble's commercial vehicle map database.
+      tags:
+        - Geocoding
+      parameters:
+        - name: addr
+          in: query
+          required: true
+          description: Address to geocode (street, city, state/province, zip, country)
+          schema:
+            type: string
+          example: "1 Infinite Loop, Cupertino, CA 95014"
+        - name: region
+          in: query
+          schema:
+            type: string
+            enum: [NA, EU, SA, AF, AS, OC]
+            default: NA
+          description: Geographic region
+        - name: outputFormat
+          in: query
+          schema:
+            type: string
+            enum: [json, xml]
+            default: json
+      responses:
+        '200':
+          description: Geocoded location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodeResponse'
+
+  /Service.svc/reverseGeocode:
+    get:
+      operationId: reverseGeocode
+      summary: Reverse geocode coordinates to address
+      description: Converts geographic coordinates (lat/lng) to a nearest street address.
+      tags:
+        - Geocoding
+      parameters:
+        - name: coords
+          in: query
+          required: true
+          description: Latitude and longitude as "lat,lng"
+          schema:
+            type: string
+          example: "37.3318,-122.0312"
+        - name: region
+          in: query
+          schema:
+            type: string
+            enum: [NA, EU, SA]
+            default: NA
+      responses:
+        '200':
+          description: Reverse geocoded address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressResponse'
+
+components:
+  securitySchemes:
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: "Format: ALK apiKey"
+
+  schemas:
+    RouteResponse:
+      type: object
+      properties:
+        RouteReports:
+          type: array
+          items:
+            type: object
+            properties:
+              ReportLines:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RouteLeg'
+        TMiles:
+          type: number
+          description: Total route miles
+        THours:
+          type: number
+          description: Total drive hours
+        Tolls:
+          type: object
+          properties:
+            TotalCost:
+              type: number
+            Currency:
+              type: string
+        Directions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectionStep'
+
+    RouteLeg:
+      type: object
+      properties:
+        LegMiles:
+          type: number
+          description: Leg distance in miles
+        LegHours:
+          type: number
+          description: Leg drive time in hours
+        StartPoint:
+          $ref: '#/components/schemas/StopPoint'
+        EndPoint:
+          $ref: '#/components/schemas/StopPoint'
+
+    StopPoint:
+      type: object
+      properties:
+        Address:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+
+    DirectionStep:
+      type: object
+      properties:
+        Direction:
+          type: string
+        Distance:
+          type: number
+        DriveTime:
+          type: string
+        RoadName:
+          type: string
+        State:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+
+    MileageResponse:
+      type: object
+      properties:
+        Mileage:
+          type: number
+          description: Miles between stops
+        Hours:
+          type: number
+          description: Drive time in hours
+        FuelCost:
+          type: number
+          description: Estimated fuel cost in USD
+        RouteType:
+          type: string
+
+    GeocodeResponse:
+      type: object
+      properties:
+        Lat:
+          type: number
+        Lon:
+          type: number
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Quality:
+          type: string
+          enum: [Exact, Interpolated, City, Zip, State, Country]
+
+    AddressResponse:
+      type: object
+      properties:
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
+
+    ErrorResponse:
+      type: object
+      properties:
+        Description:
+          type: string
+        ExceptionType:
+          type: string
+        StatusCode:
+          type: integer

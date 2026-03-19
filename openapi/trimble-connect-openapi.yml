@@ -1,0 +1,634 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect API
+  description: >-
+    The Trimble Connect API enables integration with Trimble's cloud-based construction
+    collaboration platform. Provides access to project data, BIM models, document
+    management, issues (BCF Topics), and team collaboration features for construction
+    project management. Trimble Connect acts as the BIM collaboration hub integrating
+    Tekla, SketchUp, and third-party tools.
+  version: "2.0"
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+  - url: https://app.connect.trimble.com/tc/api/2.0
+    description: Trimble Connect Production API
+
+security:
+  - BearerAuth: []
+
+tags:
+  - name: Projects
+    description: Project management
+  - name: Files
+    description: File and document management
+  - name: Models
+    description: BIM model access
+  - name: BCF Topics
+    description: Building Collaboration Format issue tracking
+  - name: Users
+    description: User and team management
+
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List projects
+      description: Returns a list of Trimble Connect projects accessible to the authenticated user.
+      tags:
+        - Projects
+      parameters:
+        - name: includeDeleted
+          in: query
+          schema:
+            type: boolean
+            default: false
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 50
+            maximum: 100
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListResponse'
+        '401':
+          description: Unauthorized
+
+    post:
+      operationId: createProject
+      summary: Create a project
+      description: Creates a new Trimble Connect project.
+      tags:
+        - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+
+  /projects/{projectId}:
+    get:
+      operationId: getProject
+      summary: Get project details
+      description: Returns detailed information for a specific project.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          description: Project not found
+
+    patch:
+      operationId: updateProject
+      summary: Update a project
+      description: Updates mutable project properties such as name, description, and status.
+      tags:
+        - Projects
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+      responses:
+        '200':
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+
+  /projects/{projectId}/files:
+    get:
+      operationId: listProjectFiles
+      summary: List project files
+      description: Returns files and folders within a project directory.
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+        - name: path
+          in: query
+          schema:
+            type: string
+          description: Parent folder path
+          example: "/Models/Structural"
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+            default: 50
+      responses:
+        '200':
+          description: List of files
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileListResponse'
+
+    post:
+      operationId: uploadFile
+      summary: Upload a file to a project
+      description: >-
+        Uploads a file to the specified project folder. Supports BIM model files
+        (IFC, RVT, SKP, NWD, NWC), drawings (PDF, DWG), and documents.
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+                - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: File binary content
+                path:
+                  type: string
+                  description: Target folder path
+                description:
+                  type: string
+      responses:
+        '201':
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+  /projects/{projectId}/files/{fileId}:
+    get:
+      operationId: getFile
+      summary: Get file metadata
+      description: Returns metadata for a specific file.
+      tags:
+        - Files
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+        - name: fileId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: File metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+
+  /projects/{projectId}/topics:
+    get:
+      operationId: listBCFTopics
+      summary: List BCF topics (issues)
+      description: >-
+        Returns BIM Collaboration Format (BCF) topics for a project. BCF topics
+        represent issues, clashes, comments, and design queries tied to specific
+        locations or objects in BIM models.
+      tags:
+        - BCF Topics
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+        - name: topicType
+          in: query
+          schema:
+            type: string
+            enum: [ISSUE, REQUEST_FOR_INFORMATION, CLASH, COMMENT, TASK]
+        - name: topicStatus
+          in: query
+          schema:
+            type: string
+            enum: [OPEN, IN_PROGRESS, RESOLVED, CLOSED]
+        - name: assignedTo
+          in: query
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+      responses:
+        '200':
+          description: List of BCF topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicListResponse'
+
+    post:
+      operationId: createBCFTopic
+      summary: Create a BCF topic
+      description: Creates a new BCF topic (issue) in the project.
+      tags:
+        - BCF Topics
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicCreate'
+      responses:
+        '201':
+          description: Topic created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+
+  /projects/{projectId}/topics/{topicGuid}:
+    get:
+      operationId: getBCFTopic
+      summary: Get a BCF topic
+      description: Returns details for a specific BCF topic.
+      tags:
+        - BCF Topics
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+        - name: topicGuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: BCF topic details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+
+    put:
+      operationId: updateBCFTopic
+      summary: Update a BCF topic
+      description: Updates a BCF topic status, assignee, or other fields.
+      tags:
+        - BCF Topics
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+        - name: topicGuid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicUpdate'
+      responses:
+        '200':
+          description: Topic updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+
+  /projects/{projectId}/members:
+    get:
+      operationId: listProjectMembers
+      summary: List project members
+      description: Returns all users and their roles within a project.
+      tags:
+        - Users
+      parameters:
+        - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Project members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberListResponse'
+
+components:
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token
+
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
+
+  schemas:
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, ARCHIVED, DELETED]
+        type:
+          type: string
+          enum: [CONSTRUCTION, INFRASTRUCTURE, ENGINEERING, OTHER]
+        location:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        thumbnail:
+          type: string
+          format: uri
+        memberCount:
+          type: integer
+        fileCount:
+          type: integer
+
+    ProjectCreate:
+      type: object
+      required:
+        - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum: [CONSTRUCTION, INFRASTRUCTURE, ENGINEERING, OTHER]
+        location:
+          type: string
+
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum: [ACTIVE, ARCHIVED]
+        location:
+          type: string
+
+    ProjectListResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        totalCount:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+
+    File:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+          description: Full folder path
+        fileType:
+          type: string
+          enum: [FILE, FOLDER]
+        contentType:
+          type: string
+          description: MIME type
+        size:
+          type: integer
+          description: File size in bytes
+        version:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        description:
+          type: string
+        downloadUrl:
+          type: string
+          format: uri
+          description: Pre-signed download URL (time-limited)
+        thumbnailUrl:
+          type: string
+          format: uri
+
+    FileListResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        totalCount:
+          type: integer
+        path:
+          type: string
+
+    Topic:
+      type: object
+      description: BCF topic (issue) in BIM Collaboration Format
+      properties:
+        guid:
+          type: string
+          format: uuid
+        topicType:
+          type: string
+          enum: [ISSUE, REQUEST_FOR_INFORMATION, CLASH, COMMENT, TASK]
+        topicStatus:
+          type: string
+          enum: [OPEN, IN_PROGRESS, RESOLVED, CLOSED]
+        title:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+          enum: [CRITICAL, HIGH, NORMAL, LOW]
+        assignedTo:
+          type: string
+          description: User email or ID
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+        creationAuthor:
+          type: string
+        modifiedAuthor:
+          type: string
+        viewpoints:
+          type: array
+          items:
+            type: object
+            properties:
+              guid:
+                type: string
+                format: uuid
+              snapshotUrl:
+                type: string
+                format: uri
+        referenceLinks:
+          type: array
+          items:
+            type: string
+
+    TopicCreate:
+      type: object
+      required:
+        - title
+        - topicType
+        - topicStatus
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicType:
+          type: string
+          enum: [ISSUE, REQUEST_FOR_INFORMATION, CLASH, COMMENT, TASK]
+        topicStatus:
+          type: string
+          enum: [OPEN, IN_PROGRESS]
+          default: OPEN
+        priority:
+          type: string
+          enum: [CRITICAL, HIGH, NORMAL, LOW]
+          default: NORMAL
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
+
+    TopicUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicStatus:
+          type: string
+          enum: [OPEN, IN_PROGRESS, RESOLVED, CLOSED]
+        priority:
+          type: string
+          enum: [CRITICAL, HIGH, NORMAL, LOW]
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+
+    TopicListResponse:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+        totalCount:
+          type: integer
+
+    Member:
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+        displayName:
+          type: string
+        role:
+          type: string
+          enum: [ADMIN, MEMBER, VIEWER]
+        joinedAt:
+          type: string
+          format: date-time
+
+    MemberListResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member'
+        totalCount:
+          type: integer

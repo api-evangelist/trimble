@@ -1,0 +1,76 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "trimble": "https://developer.trimble.com/vocab/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Project": "schema:Project",
+    "File": "schema:DigitalDocument",
+    "Topic": "schema:ItemList",
+    "Route": "schema:Trip",
+    "RouteStop": "schema:Place",
+    "Member": "schema:OrganizationMember",
+
+    "id": "@id",
+    "name": "schema:name",
+    "description": "schema:description",
+    "status": "schema:status",
+    "type": "schema:additionalType",
+    "location": "schema:location",
+    "createdAt": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "updatedAt": {
+      "@id": "schema:dateModified",
+      "@type": "xsd:dateTime"
+    },
+    "createdBy": "schema:author",
+    "thumbnail": {
+      "@id": "schema:thumbnailUrl",
+      "@type": "@id"
+    },
+
+    "fileType": "schema:fileFormat",
+    "contentType": "schema:encodingFormat",
+    "size": "schema:contentSize",
+    "version": "schema:version",
+    "downloadUrl": {
+      "@id": "schema:contentUrl",
+      "@type": "@id"
+    },
+    "path": "schema:path",
+
+    "guid": "schema:identifier",
+    "topicType": "schema:additionalType",
+    "topicStatus": "schema:actionStatus",
+    "title": "schema:name",
+    "priority": "schema:priority",
+    "assignedTo": "schema:contributor",
+    "dueDate": {
+      "@id": "schema:scheduledTime",
+      "@type": "xsd:date"
+    },
+
+    "totalMiles": "schema:distance",
+    "totalHours": "schema:duration",
+    "routeType": "trimble:routeType",
+    "vehicleType": "schema:vehicleEngine",
+    "stops": "schema:itemListElement",
+    "legs": "trimble:routeLegs",
+
+    "latitude": {
+      "@id": "geo:lat",
+      "@type": "xsd:double"
+    },
+    "longitude": {
+      "@id": "geo:long",
+      "@type": "xsd:double"
+    },
+
+    "role": "schema:roleName",
+    "email": "schema:email"
+  }
+}
