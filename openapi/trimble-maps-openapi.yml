@@ -20,15 +20,10 @@ security:
   - ApiKeyHeader: []
 
 tags:
-  - name: Routing
-    description: Route calculation and optimization
   - name: Geocoding
     description: Address and coordinate conversion
-  - name: Maps
-    description: Map tile and imagery services
-  - name: Places
-    description: Points of interest and place lookup
-
+  - name: Routing
+    description: Route calculation and optimization
 paths:
   /Service.svc/route:
     get:

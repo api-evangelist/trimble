@@ -22,14 +22,12 @@ security:
   - BearerAuth: []
 
 tags:
-  - name: Projects
-    description: Project management
-  - name: Files
-    description: File and document management
-  - name: Models
-    description: BIM model access
   - name: BCF Topics
     description: Building Collaboration Format issue tracking
+  - name: Files
+    description: File and document management
+  - name: Projects
+    description: Project management
   - name: Users
     description: User and team management
 
