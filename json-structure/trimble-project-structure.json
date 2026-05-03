@@ -1,0 +1,35 @@
+{
+  "title": "Trimble Connect Project Structure",
+  "description": "Structure documentation for Trimble Connect project entities used in construction BIM collaboration",
+  "structure": {
+    "id": "string (UUID) — Unique project identifier",
+    "name": "string — Project name (required)",
+    "description": "string — Project description",
+    "status": "string enum — Project lifecycle state: ACTIVE | ARCHIVED | DELETED",
+    "type": "string enum — Project domain: CONSTRUCTION | INFRASTRUCTURE | ENGINEERING | OTHER",
+    "location": "string — Physical location description (city, address, or region)",
+    "createdAt": "string (ISO 8601 UTC) — Project creation timestamp",
+    "updatedAt": "string (ISO 8601 UTC) — Last modification timestamp",
+    "createdBy": "string — User ID of the project creator",
+    "thumbnail": "string (URI) — URL of the project thumbnail image",
+    "memberCount": "integer — Number of team members with project access",
+    "fileCount": "integer — Number of files stored in the project"
+  },
+  "statusValues": {
+    "ACTIVE": "Project is ongoing and accessible to members",
+    "ARCHIVED": "Project is read-only and closed to new activity",
+    "DELETED": "Project has been soft-deleted (recoverable by admin)"
+  },
+  "typeValues": {
+    "CONSTRUCTION": "Building construction projects (commercial, residential, mixed-use)",
+    "INFRASTRUCTURE": "Civil infrastructure (bridges, roads, utilities)",
+    "ENGINEERING": "Engineering design without construction phase",
+    "OTHER": "Uncategorized or general-purpose projects"
+  },
+  "notes": [
+    "id is a UUID v4 format assigned by Trimble Connect at project creation",
+    "Projects with ACTIVE status are visible in project list views",
+    "Deleted projects can be recovered by workspace administrators within 30 days",
+    "fileCount includes all versions of versioned files (not unique filenames)"
+  ]
+}

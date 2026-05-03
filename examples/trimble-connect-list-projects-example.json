@@ -1,0 +1,52 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://app.connect.trimble.com/tc/api/2.0/projects",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "Content-Type": "application/json"
+    },
+    "queryParameters": {
+      "page": 1,
+      "pageSize": 20
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "items": [
+        {
+          "id": "a3b4c5d6-e7f8-4a5b-9c1d-2e3f4a5b6c7d",
+          "name": "Riverside Tower - Phase 2",
+          "description": "Mixed-use development structural coordination and clash detection",
+          "status": "ACTIVE",
+          "type": "CONSTRUCTION",
+          "location": "Austin, TX",
+          "createdAt": "2025-11-01T09:00:00Z",
+          "updatedAt": "2026-04-28T15:30:00Z",
+          "createdBy": "usr_john.smith@aec-firm.com",
+          "thumbnail": "https://cdn.connect.trimble.com/thumbnails/a3b4c5d6.jpg",
+          "memberCount": 24,
+          "fileCount": 1842
+        },
+        {
+          "id": "b5c6d7e8-f9a0-4b6c-8d2e-3f4a5b6c7d8e",
+          "name": "Harbor Bridge Rehabilitation",
+          "description": "Infrastructure BIM for structural assessment and repair drawings",
+          "status": "ACTIVE",
+          "type": "INFRASTRUCTURE",
+          "location": "Seattle, WA",
+          "createdAt": "2025-08-15T11:00:00Z",
+          "updatedAt": "2026-04-30T09:45:00Z",
+          "createdBy": "usr_mary.jones@engineering.com",
+          "thumbnail": "https://cdn.connect.trimble.com/thumbnails/b5c6d7e8.jpg",
+          "memberCount": 12,
+          "fileCount": 567
+        }
+      ],
+      "totalCount": 2,
+      "page": 1,
+      "pageSize": 20
+    }
+  }
+}

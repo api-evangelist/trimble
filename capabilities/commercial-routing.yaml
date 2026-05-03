@@ -1,0 +1,92 @@
+name: Commercial Vehicle Routing
+description: >-
+  Workflow capability for commercial vehicle route planning and geocoding using
+  Trimble Maps / PC*MILER. Supports truck-specific route optimization with weight,
+  height, and hazmat restrictions, toll cost estimation, and address geocoding
+  for logistics and transportation operations.
+version: "1.0"
+
+imports:
+  - capabilities/shared/trimble-maps.yaml
+
+tools:
+  - name: plan-truck-route
+    description: Calculate an optimized route for a commercial vehicle between multiple stops with toll costs and fuel estimates
+    operationRef: trimble-maps/calculateRoute
+    inputs:
+      - name: stops
+        description: Semicolon-delimited list of stops (e.g., "Dallas,TX;Oklahoma City,OK;Kansas City,MO")
+        required: true
+      - name: vehicleType
+        description: "Vehicle class: Truck, LightTruck, Auto"
+        required: false
+      - name: routeType
+        description: "Optimization: Practical, Shortest, Fastest, Tolls"
+        required: false
+      - name: vehicleHeight
+        description: Vehicle height in feet (for clearance restrictions)
+        required: false
+      - name: vehicleWeight
+        description: Gross vehicle weight in pounds (for weight limit restrictions)
+        required: false
+
+  - name: calculate-mileage
+    description: Get mileage-only calculation between stops without full routing details
+    operationRef: trimble-maps/getRouteMileage
+    inputs:
+      - name: stops
+        description: Semicolon-delimited list of stops
+        required: true
+      - name: vehicleType
+        description: Vehicle class for mileage calculation
+        required: false
+
+  - name: geocode-address
+    description: Convert a street address or city/state to latitude/longitude coordinates
+    operationRef: trimble-maps/geocodeAddress
+    inputs:
+      - name: addr
+        description: Full address string to geocode (e.g., "1 Sylvan Way, Parsippany, NJ 07054")
+        required: true
+
+  - name: reverse-geocode
+    description: Convert geographic coordinates to a street address
+    operationRef: trimble-maps/reverseGeocode
+    inputs:
+      - name: coords
+        description: "Coordinate pair as lat,lng (e.g., 40.8735,-74.4284)"
+        required: true
+
+  - name: get-map-tile
+    description: Retrieve a raster map tile for rendering in web or mobile applications
+    operationRef: trimble-maps/getMapTile
+    inputs:
+      - name: zoom
+        description: Zoom level (0-20)
+        required: true
+      - name: x
+        description: Tile column (X coordinate)
+        required: true
+      - name: y
+        description: Tile row (Y coordinate)
+        required: true
+      - name: style
+        description: "Map style: default, satellite, hybrid"
+        required: false
+
+  - name: get-location-timezone
+    description: Get the timezone for a geographic coordinate to support driver HOS scheduling
+    operationRef: trimble-maps/getTimezone
+    inputs:
+      - name: coords
+        description: "Coordinate pair as lat,lng"
+        required: true
+
+adapters:
+  rest:
+    port: 8081
+    basePath: /commercial-routing
+
+  mcp:
+    port: 9091
+    serverName: commercial-routing

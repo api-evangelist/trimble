@@ -1,0 +1,162 @@
+name: BIM Collaboration
+description: >-
+  Workflow capability for BIM coordination and construction collaboration using
+  Trimble Connect. Supports project setup, model file management, BCF issue tracking,
+  and team member coordination for AEC project workflows.
+version: "1.0"
+
+imports:
+  - capabilities/shared/trimble-connect.yaml
+
+tools:
+  - name: list-projects
+    description: List all accessible Trimble Connect construction projects
+    operationRef: trimble-connect/listProjects
+    inputs:
+      - name: page
+        description: Page number for paginated results
+        required: false
+      - name: pageSize
+        description: Number of projects per page (max 100)
+        required: false
+
+  - name: create-project
+    description: Create a new Trimble Connect project for BIM coordination
+    operationRef: trimble-connect/createProject
+    inputs:
+      - name: name
+        description: Project name
+        required: true
+      - name: description
+        description: Project description
+        required: false
+      - name: type
+        description: "Project type: CONSTRUCTION, INFRASTRUCTURE, ENGINEERING"
+        required: false
+      - name: location
+        description: Physical project location
+        required: false
+
+  - name: get-project
+    description: Retrieve full details for a specific Trimble Connect project
+    operationRef: trimble-connect/getProject
+    inputs:
+      - name: projectId
+        description: Unique project identifier
+        required: true
+
+  - name: upload-model-file
+    description: Upload a BIM model or document to a project folder (IFC, RVT, SKP, NWD, PDF, DWG)
+    operationRef: trimble-connect/uploadFile
+    inputs:
+      - name: projectId
+        description: Target project identifier
+        required: true
+      - name: file
+        description: Binary file content
+        required: true
+      - name: path
+        description: Target folder path (e.g., /Models/Structural)
+        required: false
+
+  - name: list-project-files
+    description: Browse files and folders in a project directory
+    operationRef: trimble-connect/listProjectFiles
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+      - name: path
+        description: Folder path to list (default is root)
+        required: false
+
+  - name: create-clash-issue
+    description: Create a BCF topic to record a clash or coordination issue in a BIM model
+    operationRef: trimble-connect/createBCFTopic
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+      - name: topicType
+        description: "Issue type: ISSUE, CLASH, REQUEST_FOR_INFORMATION, TASK"
+        required: true
+      - name: title
+        description: Short descriptive title for the clash or issue
+        required: true
+      - name: description
+        description: Detailed description of the clash or coordination issue
+        required: false
+      - name: priority
+        description: "Priority level: LOW, MEDIUM, HIGH, CRITICAL"
+        required: false
+      - name: assignedTo
+        description: Email or user ID of the person responsible for resolution
+        required: false
+      - name: dueDate
+        description: Target resolution date (ISO 8601)
+        required: false
+
+  - name: list-bcf-topics
+    description: List BCF issues and clash records for a project with optional filters
+    operationRef: trimble-connect/listBCFTopics
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+      - name: topicType
+        description: Filter by issue type
+        required: false
+      - name: topicStatus
+        description: Filter by status (OPEN, IN_PROGRESS, RESOLVED, CLOSED)
+        required: false
+      - name: assignedTo
+        description: Filter by assignee
+        required: false
+
+  - name: update-issue-status
+    description: Update the status or assignee of a BCF topic to track resolution progress
+    operationRef: trimble-connect/updateBCFTopic
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+      - name: topicGuid
+        description: BCF topic GUID
+        required: true
+      - name: topicStatus
+        description: "New status: OPEN, IN_PROGRESS, RESOLVED, CLOSED"
+        required: false
+      - name: assignedTo
+        description: New assignee email or user ID
+        required: false
+
+  - name: list-team-members
+    description: List all team members and their roles on a Trimble Connect project
+    operationRef: trimble-connect/listProjectMembers
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+
+  - name: invite-team-member
+    description: Add a new member to a Trimble Connect project with a specified role
+    operationRef: trimble-connect/addProjectMember
+    inputs:
+      - name: projectId
+        description: Project identifier
+        required: true
+      - name: email
+        description: Email address of the user to invite
+        required: true
+      - name: role
+        description: "Project role: VIEWER, CONTRIBUTOR, MANAGER, ADMIN"
+        required: true
+
+adapters:
+  rest:
+    port: 8080
+    basePath: /bim-collaboration
+
+  mcp:
+    port: 9090
+    serverName: bim-collaboration

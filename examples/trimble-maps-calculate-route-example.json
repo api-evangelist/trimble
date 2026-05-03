@@ -1,0 +1,97 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/route",
+    "headers": {
+      "Authorization": "YOUR_API_KEY"
+    },
+    "queryParameters": {
+      "stops": "Dallas,TX;Oklahoma City,OK;Kansas City,MO",
+      "vehicleType": "Truck",
+      "routeType": "Practical",
+      "vehicleHeight": "13.6",
+      "vehicleWeight": "80000",
+      "routingMethod": "default",
+      "dataVersion": "current"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "totalMiles": 497.3,
+      "totalHours": 8.2,
+      "routeType": "Practical",
+      "vehicleType": "Truck",
+      "vehicleParameters": {
+        "height": 13.6,
+        "weight": 80000,
+        "length": 53.0,
+        "axles": 5,
+        "hazmat": "None"
+      },
+      "stops": [
+        {
+          "address": "Dallas, TX",
+          "city": "Dallas",
+          "state": "TX",
+          "country": "US",
+          "latitude": 32.7767,
+          "longitude": -96.7970,
+          "stopType": "Origin"
+        },
+        {
+          "address": "Oklahoma City, OK",
+          "city": "Oklahoma City",
+          "state": "OK",
+          "country": "US",
+          "latitude": 35.4676,
+          "longitude": -97.5164,
+          "stopType": "Waypoint"
+        },
+        {
+          "address": "Kansas City, MO",
+          "city": "Kansas City",
+          "state": "MO",
+          "country": "US",
+          "latitude": 39.0997,
+          "longitude": -94.5786,
+          "stopType": "Destination"
+        }
+      ],
+      "legs": [
+        {
+          "legMiles": 206.4,
+          "legHours": 3.4,
+          "origin": { "city": "Dallas", "state": "TX" },
+          "destination": { "city": "Oklahoma City", "state": "OK" }
+        },
+        {
+          "legMiles": 290.9,
+          "legHours": 4.8,
+          "origin": { "city": "Oklahoma City", "state": "OK" },
+          "destination": { "city": "Kansas City", "state": "MO" }
+        }
+      ],
+      "tolls": {
+        "totalCost": 18.50,
+        "currency": "USD",
+        "tollRoads": [
+          { "roadName": "Oklahoma Turnpike", "cost": 10.50 },
+          { "roadName": "Kansas Turnpike", "cost": 8.00 }
+        ]
+      },
+      "fuelCost": 312.40,
+      "directions": [
+        {
+          "direction": "Take I-35 North toward Oklahoma City",
+          "distance": 5.2,
+          "driveTime": "00:07",
+          "roadName": "I-35",
+          "state": "TX",
+          "latitude": 32.8204,
+          "longitude": -97.0461
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,136 @@
+vocabulary:
+  name: Trimble Developer Platform Vocabulary
+  description: >-
+    Domain vocabulary for the Trimble developer platform covering BIM collaboration
+    (Trimble Connect), commercial vehicle routing (PC*MILER / Trimble Maps), structural
+    BIM (Tekla), 3D design (SketchUp), fleet management (TruckMate, TMT, CoPilot),
+    construction ERP (Viewpoint), and identity (Trimble Identity). Covers terminology
+    used across Trimble's construction, transportation, and geospatial API products.
+  version: "1.0.0"
+  created: "2026-05-03"
+  modified: "2026-05-03"
+
+domains:
+  - name: BIM Collaboration
+    description: Building Information Modeling collaboration concepts used in Trimble Connect
+    terms:
+      - term: BIM
+        definition: Building Information Modeling — the process of creating and managing digital representations of the physical and functional characteristics of a construction project
+        synonyms: [Building Information Model, BIM model, digital twin]
+      - term: BCF
+        definition: BIM Collaboration Format — an open standard XML-based format for communicating issues and coordination tasks embedded in 3D building models between different BIM applications
+        synonyms: [BIM Collaboration Format, BCF Topic, BCF Issue]
+      - term: BCF Topic
+        definition: An individual issue record in BCF format containing a title, description, viewpoint, status, and assignee — used to track clashes, RFIs, and coordination tasks in a BIM model
+        synonyms: [BCF Issue, Clash, BIM Issue, coordination issue]
+      - term: Clash Detection
+        definition: The automated process of identifying physical conflicts or dimensional interferences between different building model components (e.g., structural beams vs. HVAC ducts)
+        synonyms: [clash, hard clash, soft clash, interference check]
+      - term: IFC
+        definition: Industry Foundation Classes — an open, international standard (ISO 16739) for sharing BIM data between different software applications in the construction industry
+        synonyms: [IFC file, ifcXML, buildingSMART]
+      - term: Trimble Connect
+        definition: Trimble's cloud-based construction collaboration platform that acts as a BIM hub for project data, model coordination, issue tracking, and document management
+        synonyms: [TC, Connect, Trimble Connect API]
+      - term: Viewpoint
+        definition: A saved camera position and orientation in a 3D model, used in BCF topics to pinpoint the exact location of a clash or issue
+        synonyms: [BCF viewpoint, camera position, snapshot]
+
+  - name: Commercial Routing
+    description: Transportation and commercial vehicle routing concepts from PC*MILER and Trimble Maps
+    terms:
+      - term: PC*MILER
+        definition: Trimble's industry-standard commercial vehicle routing and mileage software, used for freight billing, logistics optimization, and trucking compliance across North America and globally
+        synonyms: [PCMILER, ALK PC*MILER, Trimble PC*MILER]
+      - term: Practical Route
+        definition: The default PC*MILER routing method that balances mileage efficiency with highway preference for typical long-haul trucking operations
+        synonyms: [practical routing, default route, balanced route]
+      - term: HazMat Routing
+        definition: Specialized routing that avoids tunnels, bridges, and road segments restricted for vehicles carrying hazardous materials per USDOT regulations
+        synonyms: [hazardous materials routing, HAZMAT routing, restricted routing]
+      - term: HOS
+        definition: Hours of Service — US Federal Motor Carrier Safety Administration regulations governing maximum driving hours and required rest periods for commercial drivers
+        synonyms: [Hours of Service, driver hours, FMCSA hours]
+      - term: FMCSA
+        definition: Federal Motor Carrier Safety Administration — the US DOT agency that regulates commercial motor vehicles including trucking regulations, weight limits, and hours of service
+        synonyms: [Federal Motor Carrier Safety Administration, DOT trucking]
+      - term: PCM
+        definition: PC*MILER abbreviation commonly used in Trimble transportation APIs and documentation
+        synonyms: [PC*MILER, PCMILER]
+      - term: Toll Cost
+        definition: The calculated cost of toll roads included in a PC*MILER route, aggregated by facility and totaled for the full trip
+        synonyms: [toll fees, road tolls, toll calculation]
+
+  - name: Structural BIM
+    description: Structural engineering and BIM modeling concepts related to Tekla
+    terms:
+      - term: Tekla Structures
+        definition: Trimble's structural BIM software for modeling, detailing, and fabrication of steel, concrete, and timber structures — used by structural engineers, fabricators, and contractors
+        synonyms: [Tekla, Tekla BIM, structural modeling software]
+      - term: Rebar
+        definition: Reinforcement bar used in concrete structures — Tekla Structures supports detailed rebar modeling for concrete design and precast fabrication
+        synonyms: [reinforcement bar, rebars, reinforcement]
+      - term: Fabrication
+        definition: The process of manufacturing structural components (steel beams, concrete precast) from BIM model data — Tekla supports direct fabrication shop drawing generation
+        synonyms: [structural fabrication, shop drawings, detailing]
+
+  - name: 3D Design
+    description: 3D modeling and design concepts from SketchUp
+    terms:
+      - term: SketchUp
+        definition: Trimble's 3D modeling software for architecture, interior design, and engineering — widely used for conceptual design and visualization
+        synonyms: [Google SketchUp, SketchUp Pro, SU]
+      - term: Ruby Extension
+        definition: A SketchUp plugin or tool built using the Ruby programming language via the SketchUp Ruby API — enables custom tool creation and workflow automation
+        synonyms: [SketchUp plugin, SU extension, Ruby plugin]
+      - term: LayOut
+        definition: Trimble's 2D documentation tool that accompanies SketchUp Pro — converts 3D SketchUp models into 2D construction documents and presentation sheets
+        synonyms: [SketchUp LayOut, LayOut pages]
+
+  - name: Fleet Management
+    description: Transportation fleet and vehicle management terminology
+    terms:
+      - term: TruckMate
+        definition: Trimble's Transportation Management System (TMS) for carriers and freight brokers — provides dispatch, load management, rating, and billing for trucking operations
+        synonyms: [TruckMate TMS, Trimble TruckMate]
+      - term: TMS
+        definition: Transportation Management System — software that manages transportation operations including load planning, dispatch, carrier selection, and freight billing
+        synonyms: [Transportation Management System, TruckMate, freight management]
+      - term: CoPilot
+        definition: Trimble's in-cab navigation application for commercial vehicle drivers providing truck-specific routing, real-time traffic, and turn-by-turn directions
+        synonyms: [Trimble CoPilot, in-cab navigation, CoPilot Navigation]
+      - term: TMT
+        definition: Trimble Maintenance Technology — fleet maintenance management system for tracking work orders, preventive maintenance schedules, parts inventory, and repair history
+        synonyms: [Trimble Maintenance Technology, fleet maintenance, TMT Fleet]
+      - term: ELD
+        definition: Electronic Logging Device — FMCSA-mandated device in commercial vehicles that records hours of service data — Trimble fleet management integrates with major ELD providers
+        synonyms: [Electronic Logging Device, e-log, HOS device]
+
+  - name: Construction ERP
+    description: Construction enterprise resource planning concepts from Viewpoint
+    terms:
+      - term: Viewpoint
+        definition: Trimble's suite of construction ERP software including Vista, Spectrum, and Jobpac Connect — provides accounting, HR, project management, and operations for construction firms
+        synonyms: [Viewpoint Construction Software, Vista, Spectrum, Jobpac]
+      - term: Vista
+        definition: Viewpoint Vista — a comprehensive construction ERP system covering accounting, payroll, equipment tracking, and project cost control for large construction firms
+        synonyms: [Viewpoint Vista, Vista ERP]
+      - term: Spectrum
+        definition: Viewpoint Spectrum — a cloud-based construction ERP solution for mid-market contractors covering financials, operations, and project management
+        synonyms: [Viewpoint Spectrum]
+      - term: Jobpac Connect
+        definition: Viewpoint's construction ERP product for Australia and New Zealand — provides financial management, procurement, and project cost control
+        synonyms: [Jobpac, Viewpoint Jobpac]
+
+  - name: Developer Platform
+    description: Trimble developer platform and authentication concepts
+    terms:
+      - term: Trimble Identity
+        definition: Trimble's OAuth 2.0 / OpenID Connect identity platform providing single sign-on authentication and authorization across all Trimble developer applications
+        synonyms: [TID, Trimble SSO, Trimble OAuth]
+      - term: Trimble Developer Portal
+        definition: The central developer resource at developer.trimble.com providing API documentation, SDKs, and developer tools for all Trimble APIs
+        synonyms: [developer.trimble.com, Trimble Developers]
+      - term: Modus Design System
+        definition: Trimble's open-source UI component library and design system (modus.trimble.com) for building consistent applications across the Trimble product ecosystem
+        synonyms: [Modus, Trimble Modus, Modus Components]

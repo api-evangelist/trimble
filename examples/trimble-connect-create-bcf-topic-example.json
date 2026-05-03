@@ -1,0 +1,49 @@
+{
+  "request": {
+    "method": "POST",
+    "url": "https://app.connect.trimble.com/tc/api/2.0/projects/a3b4c5d6-e7f8-4a5b-9c1d-2e3f4a5b6c7d/topics",
+    "headers": {
+      "Authorization": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9...",
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "topicType": "CLASH",
+      "topicStatus": "OPEN",
+      "title": "Structural beam conflicts with HVAC duct at Level 4 Grid C3",
+      "description": "Hard clash detected between W14x82 beam and 24\" round HVAC supply duct. Requires coordination between structural and MEP teams.",
+      "priority": "HIGH",
+      "assignedTo": "usr_mep-coordinator@hvac-sub.com",
+      "dueDate": "2026-05-15",
+      "labels": ["MEP-Clash", "Level-4", "Structural"],
+      "viewpoint": {
+        "camera": {
+          "perspectiveCamera": {
+            "cameraViewPoint": { "x": 42.5, "y": 18.3, "z": 12.8 },
+            "cameraDirection": { "x": -0.6, "y": 0.7, "z": -0.3 },
+            "fieldOfView": 60.0
+          }
+        },
+        "clippingPlanes": []
+      }
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "guid": "c6d7e8f9-a0b1-4c7d-9e3f-4a5b6c7d8e9f",
+      "topicType": "CLASH",
+      "topicStatus": "OPEN",
+      "title": "Structural beam conflicts with HVAC duct at Level 4 Grid C3",
+      "description": "Hard clash detected between W14x82 beam and 24\" round HVAC supply duct. Requires coordination between structural and MEP teams.",
+      "priority": "HIGH",
+      "assignedTo": "usr_mep-coordinator@hvac-sub.com",
+      "createdBy": "usr_coordinator@aec-firm.com",
+      "createdAt": "2026-05-03T10:15:00Z",
+      "updatedAt": "2026-05-03T10:15:00Z",
+      "dueDate": "2026-05-15",
+      "labels": ["MEP-Clash", "Level-4", "Structural"],
+      "commentCount": 0,
+      "snapshotCount": 1
+    }
+  }
+}

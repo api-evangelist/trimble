@@ -1,0 +1,85 @@
+{
+  "title": "Trimble PC*MILER Route Structure",
+  "description": "Structure documentation for commercial vehicle route entities returned by Trimble PC*MILER routing API",
+  "structure": {
+    "totalMiles": "number — Total route distance in miles",
+    "totalHours": "number — Total estimated drive time in hours",
+    "routeType": "string enum — Optimization method: Practical | Shortest | Fastest | Tolls | Avoid53",
+    "vehicleType": "string enum — Vehicle class: Truck | LightTruck | Auto | Motorcycle",
+    "vehicleParameters": {
+      "_type": "object",
+      "_description": "Truck-specific dimensional and cargo constraints",
+      "height": "number — Vehicle height in feet (used for clearance restrictions)",
+      "weight": "number — Gross vehicle weight in pounds (used for weight limit compliance)",
+      "length": "number — Vehicle length in feet",
+      "width": "number — Vehicle width in feet",
+      "hazmat": "string enum — Hazardous materials class: None | General | Explosive | InhalationHazard | Radioactive | Flammable | Corrosive | Oxidizer | Poisonous",
+      "axles": "integer (2-9) — Number of axles for toll classification"
+    },
+    "stops": {
+      "_type": "array",
+      "_minItems": 2,
+      "_description": "Ordered list of route stops from origin to destination",
+      "_item": {
+        "address": "string — Formatted address",
+        "city": "string — City name",
+        "state": "string — Two-letter state/province code",
+        "zip": "string — ZIP or postal code",
+        "country": "string — Two-letter ISO country code",
+        "latitude": "number — Decimal degrees latitude",
+        "longitude": "number — Decimal degrees longitude",
+        "stopType": "string enum — Stop role: Origin | Waypoint | Destination"
+      }
+    },
+    "legs": {
+      "_type": "array",
+      "_description": "Individual route segments between consecutive stops",
+      "_item": {
+        "legMiles": "number — Segment distance in miles",
+        "legHours": "number — Segment drive time in hours",
+        "origin": "object — Origin stop reference",
+        "destination": "object — Destination stop reference"
+      }
+    },
+    "tolls": {
+      "_type": "object",
+      "totalCost": "number — Total toll cost in USD",
+      "currency": "string — Currency code (default: USD)",
+      "tollRoads": {
+        "_type": "array",
+        "_item": {
+          "roadName": "string — Toll road or facility name",
+          "cost": "number — Individual toll cost"
+        }
+      }
+    },
+    "fuelCost": "number — Estimated fuel cost in USD based on average diesel price and MPG",
+    "directions": {
+      "_type": "array",
+      "_description": "Turn-by-turn navigation steps",
+      "_item": {
+        "direction": "string — Instruction text (e.g., 'Take I-35 North')",
+        "distance": "number — Distance to next step in miles",
+        "driveTime": "string — Drive time in HH:MM format",
+        "roadName": "string — Road or highway name",
+        "state": "string — State code",
+        "latitude": "number — Step location latitude",
+        "longitude": "number — Step location longitude"
+      }
+    }
+  },
+  "routeTypeValues": {
+    "Practical": "Balanced route optimizing time and mileage (default for trucks)",
+    "Shortest": "Minimum mileage regardless of road type",
+    "Fastest": "Minimum drive time using higher-speed roads",
+    "Tolls": "Avoid toll roads where possible",
+    "Avoid53": "Avoid roads restricted to vehicles over 53 feet"
+  },
+  "notes": [
+    "All distances are in statute miles (not kilometers)",
+    "totalHours does not include rest stops, fuel stops, or HOS breaks",
+    "fuelCost is an estimate based on national average diesel price; not a guaranteed figure",
+    "Hazmat routing enforces tunnel and route restrictions per USDOT regulations",
+    "Weight-restricted routes are enforced based on posted limits; seasonal restrictions may apply"
+  ]
+}

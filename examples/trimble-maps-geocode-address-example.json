@@ -1,0 +1,39 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/geocode",
+    "headers": {
+      "Authorization": "YOUR_API_KEY"
+    },
+    "queryParameters": {
+      "addr": "1 Sylvan Way, Parsippany, NJ 07054",
+      "dataVersion": "current"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "Address": {
+          "StreetAddress": "1 Sylvan Way",
+          "City": "Parsippany",
+          "State": "NJ",
+          "Zip": "07054",
+          "County": "Morris",
+          "Country": "US",
+          "FIPS": "34027"
+        },
+        "Coords": {
+          "Lat": "40.8735",
+          "Lon": "-74.4284"
+        },
+        "Region": 4,
+        "POITypeID": 0,
+        "SpeedLimit": 35,
+        "ConfidenceLevel": "Exact",
+        "MatchType": "ADDRESS",
+        "TruckOnly": false
+      }
+    ]
+  }
+}
