@@ -300,6 +300,8 @@ common:
     url: vocabulary/trimble-vocabulary.yml
   - type: JSONLDContext
     url: json-ld/trimble-context.jsonld
+  - type: Integrations
+    url: https://www.trimble.com/en/partners
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
