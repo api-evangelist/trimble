@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RouteResponse",
+  "title": "RouteResponse",
+  "type": "object",
+  "properties": {
+    "RouteReports": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "ReportLines": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RouteLeg"
+            }
+          }
+        }
+      }
+    },
+    "TMiles": {
+      "type": "number",
+      "description": "Total route miles"
+    },
+    "THours": {
+      "type": "number",
+      "description": "Total drive hours"
+    },
+    "Tolls": {
+      "type": "object",
+      "properties": {
+        "TotalCost": {
+          "type": "number"
+        },
+        "Currency": {
+          "type": "string"
+        }
+      }
+    },
+    "Directions": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/DirectionStep"
+      }
+    }
+  }
+}

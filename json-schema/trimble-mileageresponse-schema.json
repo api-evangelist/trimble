@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MileageResponse",
+  "title": "MileageResponse",
+  "type": "object",
+  "properties": {
+    "Mileage": {
+      "type": "number",
+      "description": "Miles between stops"
+    },
+    "Hours": {
+      "type": "number",
+      "description": "Drive time in hours"
+    },
+    "FuelCost": {
+      "type": "number",
+      "description": "Estimated fuel cost in USD"
+    },
+    "RouteType": {
+      "type": "string"
+    }
+  }
+}

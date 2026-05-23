@@ -1,0 +1,198 @@
+{
+  "provider": "Trimble",
+  "providerId": "trimble",
+  "kind": "json-structure",
+  "description": "Structural overview of the Trimble API surface; extracted from openapi/.",
+  "schemaCount": 12,
+  "operationCount": 12,
+  "schemas": [
+    {
+      "name": "Project",
+      "type": "object",
+      "propertyCount": 12,
+      "required": []
+    },
+    {
+      "name": "ProjectCreate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "name"
+      ]
+    },
+    {
+      "name": "ProjectUpdate",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ProjectListResponse",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "File",
+      "type": "object",
+      "propertyCount": 13,
+      "required": []
+    },
+    {
+      "name": "FileListResponse",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "Topic",
+      "type": "object",
+      "propertyCount": 15,
+      "required": []
+    },
+    {
+      "name": "TopicCreate",
+      "type": "object",
+      "propertyCount": 8,
+      "required": [
+        "title",
+        "topicType",
+        "topicStatus"
+      ]
+    },
+    {
+      "name": "TopicUpdate",
+      "type": "object",
+      "propertyCount": 6,
+      "required": []
+    },
+    {
+      "name": "TopicListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    },
+    {
+      "name": "Member",
+      "type": "object",
+      "propertyCount": 5,
+      "required": []
+    },
+    {
+      "name": "MemberListResponse",
+      "type": "object",
+      "propertyCount": 2,
+      "required": []
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/projects",
+      "operationId": "listProjects",
+      "summary": "List projects",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects",
+      "operationId": "createProject",
+      "summary": "Create a project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}",
+      "operationId": "getProject",
+      "summary": "Get project details",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "PATCH",
+      "path": "/projects/{projectId}",
+      "operationId": "updateProject",
+      "summary": "Update a project",
+      "tags": [
+        "Projects"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/files",
+      "operationId": "listProjectFiles",
+      "summary": "List project files",
+      "tags": [
+        "Files"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/files",
+      "operationId": "uploadFile",
+      "summary": "Upload a file to a project",
+      "tags": [
+        "Files"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/files/{fileId}",
+      "operationId": "getFile",
+      "summary": "Get file metadata",
+      "tags": [
+        "Files"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/topics",
+      "operationId": "listBCFTopics",
+      "summary": "List BCF topics (issues)",
+      "tags": [
+        "BCF Topics"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/projects/{projectId}/topics",
+      "operationId": "createBCFTopic",
+      "summary": "Create a BCF topic",
+      "tags": [
+        "BCF Topics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/topics/{topicGuid}",
+      "operationId": "getBCFTopic",
+      "summary": "Get a BCF topic",
+      "tags": [
+        "BCF Topics"
+      ]
+    },
+    {
+      "method": "PUT",
+      "path": "/projects/{projectId}/topics/{topicGuid}",
+      "operationId": "updateBCFTopic",
+      "summary": "Update a BCF topic",
+      "tags": [
+        "BCF Topics"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/projects/{projectId}/members",
+      "operationId": "listProjectMembers",
+      "summary": "List project members",
+      "tags": [
+        "Users"
+      ]
+    }
+  ]
+}

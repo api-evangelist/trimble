@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AddressResponse",
+  "title": "AddressResponse",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "Zip": {
+      "type": "string"
+    },
+    "Country": {
+      "type": "string"
+    },
+    "Coords": {
+      "$ref": "#/components/schemas/Coords"
+    }
+  }
+}

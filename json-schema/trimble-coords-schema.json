@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Coords",
+  "title": "Coords",
+  "type": "object",
+  "properties": {
+    "Lat": {
+      "type": "number",
+      "minimum": -90,
+      "maximum": 90
+    },
+    "Lon": {
+      "type": "number",
+      "minimum": -180,
+      "maximum": 180
+    }
+  }
+}

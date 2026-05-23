@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Topic",
+  "title": "Topic",
+  "type": "object",
+  "description": "BCF topic (issue) in BIM Collaboration Format",
+  "properties": {
+    "guid": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "topicType": {
+      "type": "string",
+      "enum": [
+        "ISSUE",
+        "REQUEST_FOR_INFORMATION",
+        "CLASH",
+        "COMMENT",
+        "TASK"
+      ]
+    },
+    "topicStatus": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS",
+        "RESOLVED",
+        "CLOSED"
+      ]
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "NORMAL",
+        "LOW"
+      ]
+    },
+    "assignedTo": {
+      "type": "string",
+      "description": "User email or ID"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "label": {
+      "type": "string"
+    },
+    "createdDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "modifiedDate": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "creationAuthor": {
+      "type": "string"
+    },
+    "modifiedAuthor": {
+      "type": "string"
+    },
+    "viewpoints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "guid": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "snapshotUrl": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    },
+    "referenceLinks": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

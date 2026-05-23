@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TopicCreate",
+  "title": "TopicCreate",
+  "type": "object",
+  "required": [
+    "title",
+    "topicType",
+    "topicStatus"
+  ],
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "topicType": {
+      "type": "string",
+      "enum": [
+        "ISSUE",
+        "REQUEST_FOR_INFORMATION",
+        "CLASH",
+        "COMMENT",
+        "TASK"
+      ]
+    },
+    "topicStatus": {
+      "type": "string",
+      "enum": [
+        "OPEN",
+        "IN_PROGRESS"
+      ],
+      "default": "OPEN"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "CRITICAL",
+        "HIGH",
+        "NORMAL",
+        "LOW"
+      ],
+      "default": "NORMAL"
+    },
+    "assignedTo": {
+      "type": "string"
+    },
+    "dueDate": {
+      "type": "string",
+      "format": "date"
+    },
+    "label": {
+      "type": "string"
+    }
+  }
+}

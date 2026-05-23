@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GeocodeResponse",
+  "title": "GeocodeResponse",
+  "type": "object",
+  "properties": {
+    "Lat": {
+      "type": "number"
+    },
+    "Lon": {
+      "type": "number"
+    },
+    "Address": {
+      "type": "string"
+    },
+    "City": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "Zip": {
+      "type": "string"
+    },
+    "Country": {
+      "type": "string"
+    },
+    "Quality": {
+      "type": "string",
+      "enum": [
+        "Exact",
+        "Interpolated",
+        "City",
+        "Zip",
+        "State",
+        "Country"
+      ]
+    }
+  }
+}

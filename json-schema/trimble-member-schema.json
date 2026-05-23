@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Member",
+  "title": "Member",
+  "type": "object",
+  "properties": {
+    "userId": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string",
+      "format": "email"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "role": {
+      "type": "string",
+      "enum": [
+        "ADMIN",
+        "MEMBER",
+        "VIEWER"
+      ]
+    },
+    "joinedAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

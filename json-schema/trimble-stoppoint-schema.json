@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StopPoint",
+  "title": "StopPoint",
+  "type": "object",
+  "properties": {
+    "Address": {
+      "type": "string"
+    },
+    "Coords": {
+      "$ref": "#/components/schemas/Coords"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DirectionStep",
+  "title": "DirectionStep",
+  "type": "object",
+  "properties": {
+    "Direction": {
+      "type": "string"
+    },
+    "Distance": {
+      "type": "number"
+    },
+    "DriveTime": {
+      "type": "string"
+    },
+    "RoadName": {
+      "type": "string"
+    },
+    "State": {
+      "type": "string"
+    },
+    "Coords": {
+      "$ref": "#/components/schemas/Coords"
+    }
+  }
+}

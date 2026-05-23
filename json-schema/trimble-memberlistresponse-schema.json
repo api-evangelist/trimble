@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/MemberListResponse",
+  "title": "MemberListResponse",
+  "type": "object",
+  "properties": {
+    "members": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Member"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    }
+  }
+}

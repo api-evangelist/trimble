@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProjectListResponse",
+  "title": "ProjectListResponse",
+  "type": "object",
+  "properties": {
+    "projects": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/Project"
+      }
+    },
+    "totalCount": {
+      "type": "integer"
+    },
+    "page": {
+      "type": "integer"
+    },
+    "pageSize": {
+      "type": "integer"
+    }
+  }
+}

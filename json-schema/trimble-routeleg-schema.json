@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RouteLeg",
+  "title": "RouteLeg",
+  "type": "object",
+  "properties": {
+    "LegMiles": {
+      "type": "number",
+      "description": "Leg distance in miles"
+    },
+    "LegHours": {
+      "type": "number",
+      "description": "Leg drive time in hours"
+    },
+    "StartPoint": {
+      "$ref": "#/components/schemas/StopPoint"
+    },
+    "EndPoint": {
+      "$ref": "#/components/schemas/StopPoint"
+    }
+  }
+}
