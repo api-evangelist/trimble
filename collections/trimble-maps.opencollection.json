@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Maps API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate a route between stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/route",
+            "params": [
+              {
+                "name": "stops",
+                "value": "Dallas,TX;Chicago,IL",
+                "type": "query",
+                "description": "Semicolon-delimited list of stops in \"City,State\" or lat/lng format. Example: \"Dallas,TX;Chicago,IL;Detroit,MI\""
+              },
+              {
+                "name": "vehicleType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "routeType",
+                "value": "",
+                "type": "query",
+                "description": "Routing optimization type"
+              },
+              {
+                "name": "height",
+                "value": "13.5",
+                "type": "query",
+                "description": "Vehicle height in feet"
+              },
+              {
+                "name": "weight",
+                "value": "80000",
+                "type": "query",
+                "description": "Vehicle weight in pounds"
+              },
+              {
+                "name": "length",
+                "value": "53",
+                "type": "query",
+                "description": "Vehicle length in feet"
+              },
+              {
+                "name": "hazmat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Calculates an optimized route for commercial vehicles between multiple stops. Returns mileage, drive time, toll costs, and turn-by-turn directions optimized for truck dimensions, weight, and hazmat restrictions."
+        },
+        {
+          "info": {
+            "name": "Get mileage between stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/mileage",
+            "params": [
+              {
+                "name": "stops",
+                "value": "Dallas,TX;Houston,TX",
+                "type": "query"
+              },
+              {
+                "name": "vehicleType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "routeType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the calculated mileage and driving time between stops using PC*MILER routing logic. Supports both practical (highway-preferred) and shortest routing for commercial vehicles."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Geocode an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/geocode",
+            "params": [
+              {
+                "name": "addr",
+                "value": "1 Infinite Loop, Cupertino, CA 95014",
+                "type": "query",
+                "description": "Address to geocode (street, city, state/province, zip, country)"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Geographic region"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Converts a street address or city/state/zip to geographic coordinates using Trimble's commercial vehicle map database."
+        },
+        {
+          "info": {
+            "name": "Reverse geocode coordinates to address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://pcmiler.alk.com/apis/rest/v1.0/Service.svc/reverseGeocode",
+            "params": [
+              {
+                "name": "coords",
+                "value": "37.3318,-122.0312",
+                "type": "query",
+                "description": "Latitude and longitude as \"lat,lng\""
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Converts geographic coordinates (lat/lng) to a nearest street address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

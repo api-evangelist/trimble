@@ -1,0 +1,717 @@
+{
+  "item": [
+    {
+      "id": "b366188c-a185-442b-8a7e-2902ffa88817",
+      "name": "Geocoding",
+      "description": {
+        "content": "Address and coordinate conversion",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1d49d39-3318-4923-a23d-9bf8e26a89ea",
+          "name": "Geocode an address",
+          "request": {
+            "name": "Geocode an address",
+            "description": {
+              "content": "Converts a street address or city/state/zip to geographic coordinates using Trimble's commercial vehicle map database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "geocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "addr",
+                  "value": "<string>",
+                  "description": "(Required) Address to geocode (street, city, state/province, zip, country)"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "NA",
+                  "description": "Geographic region"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a72fb7f-4997-4f61-ba56-6e20da669f7e",
+              "name": "Geocoded location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "geocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "addr",
+                      "value": "1 Infinite Loop, Cupertino, CA 95014"
+                    },
+                    {
+                      "key": "region",
+                      "value": "NA"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Lat\": 2480.4655199734725,\n  \"Lon\": 1910.7550396863426,\n  \"Address\": \"string\",\n  \"City\": \"string\",\n  \"State\": \"string\",\n  \"Zip\": \"string\",\n  \"Country\": \"string\",\n  \"Quality\": \"Interpolated\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6740613f-f0f9-4f80-a389-fec751edb6e2",
+          "name": "Reverse geocode coordinates to address",
+          "request": {
+            "name": "Reverse geocode coordinates to address",
+            "description": {
+              "content": "Converts geographic coordinates (lat/lng) to a nearest street address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "reverseGeocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "coords",
+                  "value": "<string>",
+                  "description": "(Required) Latitude and longitude as \"lat,lng\""
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "NA"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe1c5f5d-9a29-4934-be2c-5708dc659e44",
+              "name": "Reverse geocoded address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "reverseGeocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "coords",
+                      "value": "37.3318,-122.0312"
+                    },
+                    {
+                      "key": "region",
+                      "value": "NA"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Address\": \"string\",\n  \"City\": \"string\",\n  \"State\": \"string\",\n  \"Zip\": \"string\",\n  \"Country\": \"string\",\n  \"Coords\": {\n    \"Lat\": 6.443553549448808,\n    \"Lon\": -53.550883566266336\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d8d0c825-6ee4-4f37-b1d3-2573ce1dc623",
+      "name": "Routing",
+      "description": {
+        "content": "Route calculation and optimization",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5cc1935c-4686-49ae-b681-c9e7e34d39bd",
+          "name": "Calculate a route between stops",
+          "request": {
+            "name": "Calculate a route between stops",
+            "description": {
+              "content": "Calculates an optimized route for commercial vehicles between multiple stops. Returns mileage, drive time, toll costs, and turn-by-turn directions optimized for truck dimensions, weight, and hazmat restrictions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stops",
+                  "value": "<string>",
+                  "description": "(Required) Semicolon-delimited list of stops in \"City,State\" or lat/lng format. Example: \"Dallas,TX;Chicago,IL;Detroit,MI\""
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleType",
+                  "value": "Truck"
+                },
+                {
+                  "disabled": false,
+                  "key": "routeType",
+                  "value": "Practical",
+                  "description": "Routing optimization type"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "<number>",
+                  "description": "Vehicle height in feet"
+                },
+                {
+                  "disabled": false,
+                  "key": "weight",
+                  "value": "<number>",
+                  "description": "Vehicle weight in pounds"
+                },
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<number>",
+                  "description": "Vehicle length in feet"
+                },
+                {
+                  "disabled": false,
+                  "key": "hazmat",
+                  "value": "None"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "Mileage"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f01e1a44-ef02-4755-8013-e44005822a9b",
+              "name": "Route calculation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RouteReports\": [\n    {\n      \"ReportLines\": [\n        {\n          \"LegMiles\": 6266.50152017515,\n          \"LegHours\": 1773.1688153036562,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"LegMiles\": 5060.661257472,\n          \"LegHours\": 9142.317018452077,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"ReportLines\": [\n        {\n          \"LegMiles\": 4513.4429761020965,\n          \"LegHours\": 4617.125481139792,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"LegMiles\": 5040.785949887311,\n          \"LegHours\": 8033.113794831759,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"TMiles\": 2012.8528892334618,\n  \"THours\": 3287.4833081034326,\n  \"Tolls\": {\n    \"TotalCost\": 6522.902441281926,\n    \"Currency\": \"string\"\n  },\n  \"Directions\": [\n    {\n      \"Direction\": \"string\",\n      \"Distance\": 7857.730163084741,\n      \"DriveTime\": \"string\",\n      \"RoadName\": \"string\",\n      \"State\": \"string\",\n      \"Coords\": {\n        \"Lat\": 70.26132004999812,\n        \"Lon\": 141.30445453306078\n      }\n    },\n    {\n      \"Direction\": \"string\",\n      \"Distance\": 2647.1278826105736,\n      \"DriveTime\": \"string\",\n      \"RoadName\": \"string\",\n      \"State\": \"string\",\n      \"Coords\": {\n        \"Lat\": -21.677899775836806,\n        \"Lon\": 104.38846787590262\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7a5dc408-faa6-4e6c-8fcf-173ad3f4b189",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Description\": \"string\",\n  \"ExceptionType\": \"string\",\n  \"StatusCode\": 2252\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "61ff50a0-575a-4b3d-9b9d-72ad61cd4400",
+              "name": "Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1f09af6b-8e17-480e-89fc-d1eb9a629b6b",
+          "name": "Get mileage between stops",
+          "request": {
+            "name": "Get mileage between stops",
+            "description": {
+              "content": "Returns the calculated mileage and driving time between stops using PC*MILER routing logic. Supports both practical (highway-preferred) and shortest routing for commercial vehicles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "mileage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stops",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleType",
+                  "value": "Truck"
+                },
+                {
+                  "disabled": false,
+                  "key": "routeType",
+                  "value": "Practical"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13c0c8f7-65e3-44ba-8a93-970428a3c74b",
+              "name": "Mileage results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "mileage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Houston,TX"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Mileage\": 6507.557435286221,\n  \"Hours\": 4257.743597082078,\n  \"FuelCost\": 4902.400191665482,\n  \"RouteType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://pcmiler.alk.com/apis/rest/v1.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "0cafd884-ee6e-4610-89e6-2c55ce839d80",
+    "name": "Trimble Maps API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Maps API (formerly ALK Technologies PC*MILER) provides interactive mapping and routing solutions optimized for commercial vehicles and transportation. Enables truck-specific routing, geocoding, map tile rendering, and turn-by-turn navigation services across North America, Europe, and global markets.\n\nContact Support:\n Name: Trimble Maps Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

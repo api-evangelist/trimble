@@ -1,0 +1,364 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Connect API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Projects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List projects",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects",
+            "params": [
+              {
+                "name": "includeDeleted",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a list of Trimble Connect projects accessible to the authenticated user."
+        },
+        {
+          "info": {
+            "name": "Create a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new Trimble Connect project."
+        },
+        {
+          "info": {
+            "name": "Get project details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ]
+          },
+          "docs": "Returns detailed information for a specific project."
+        },
+        {
+          "info": {
+            "name": "Update a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates mutable project properties such as name, description, and status."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List project files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "path",
+                "value": "/Models/Structural",
+                "type": "query",
+                "description": "Parent folder path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns files and folders within a project directory."
+        },
+        {
+          "info": {
+            "name": "Upload a file to a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "path",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads a file to the specified project folder. Supports BIM model files (IFC, RVT, SKP, NWD, NWC), drawings (PDF, DWG), and documents."
+        },
+        {
+          "info": {
+            "name": "Get file metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files/:fileId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific file."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BCF Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List BCF topics (issues)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "topicStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assignedTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns BIM Collaboration Format (BCF) topics for a project. BCF topics represent issues, clashes, comments, and design queries tied to specific locations or objects in BIM models."
+        },
+        {
+          "info": {
+            "name": "Create a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new BCF topic (issue) in the project."
+        },
+        {
+          "info": {
+            "name": "Get a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics/:topicGuid",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicGuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific BCF topic."
+        },
+        {
+          "info": {
+            "name": "Update a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics/:topicGuid",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicGuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a BCF topic status, assignee, or other fields."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Users",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List project members",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/members",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ]
+          },
+          "docs": "Returns all users and their roles within a project."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
