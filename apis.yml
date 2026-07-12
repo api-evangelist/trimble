@@ -251,6 +251,12 @@ github:
     url: https://github.com/trimble-oss
     description: Trimble Open Source Software organization
 common:
+  - type: TrustCenter
+    url: security/trimble-trust-center.yml
+  - type: DomainSecurity
+    url: security/trimble-domain-security.yml
+  - type: Authentication
+    url: authentication/trimble-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/trimble
   - type: Website
