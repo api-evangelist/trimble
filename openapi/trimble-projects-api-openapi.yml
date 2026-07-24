@@ -1,0 +1,212 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics Projects API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: Projects
+  description: Project management
+paths:
+  /projects:
+    get:
+      operationId: listProjects
+      summary: List projects
+      description: Returns a list of Trimble Connect projects accessible to the authenticated user.
+      tags:
+      - Projects
+      parameters:
+      - name: includeDeleted
+        in: query
+        schema:
+          type: boolean
+          default: false
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 50
+          maximum: 100
+      responses:
+        '200':
+          description: List of projects
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProjectListResponse'
+        '401':
+          description: Unauthorized
+    post:
+      operationId: createProject
+      summary: Create a project
+      description: Creates a new Trimble Connect project.
+      tags:
+      - Projects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectCreate'
+      responses:
+        '201':
+          description: Project created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+  /projects/{projectId}:
+    get:
+      operationId: getProject
+      summary: Get project details
+      description: Returns detailed information for a specific project.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Project details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+        '404':
+          description: Project not found
+    patch:
+      operationId: updateProject
+      summary: Update a project
+      description: Updates mutable project properties such as name, description, and status.
+      tags:
+      - Projects
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ProjectUpdate'
+      responses:
+        '200':
+          description: Project updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Project'
+components:
+  schemas:
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+        location:
+          type: string
+    Project:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+          - DELETED
+        type:
+          type: string
+          enum:
+          - CONSTRUCTION
+          - INFRASTRUCTURE
+          - ENGINEERING
+          - OTHER
+        location:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        thumbnail:
+          type: string
+          format: uri
+        memberCount:
+          type: integer
+        fileCount:
+          type: integer
+    ProjectCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONSTRUCTION
+          - INFRASTRUCTURE
+          - ENGINEERING
+          - OTHER
+        location:
+          type: string
+    ProjectListResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        totalCount:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token

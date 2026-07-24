@@ -1,0 +1,154 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics Geocoding API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: Geocoding
+  description: Address and coordinate conversion
+paths:
+  /Service.svc/geocode:
+    get:
+      operationId: geocodeAddress
+      summary: Geocode an address
+      description: Converts a street address or city/state/zip to geographic coordinates using Trimble's commercial vehicle map database.
+      tags:
+      - Geocoding
+      parameters:
+      - name: addr
+        in: query
+        required: true
+        description: Address to geocode (street, city, state/province, zip, country)
+        schema:
+          type: string
+        example: 1 Infinite Loop, Cupertino, CA 95014
+      - name: region
+        in: query
+        schema:
+          type: string
+          enum:
+          - NA
+          - EU
+          - SA
+          - AF
+          - AS
+          - OC
+          default: NA
+        description: Geographic region
+      - name: outputFormat
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      responses:
+        '200':
+          description: Geocoded location
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeocodeResponse'
+  /Service.svc/reverseGeocode:
+    get:
+      operationId: reverseGeocode
+      summary: Reverse geocode coordinates to address
+      description: Converts geographic coordinates (lat/lng) to a nearest street address.
+      tags:
+      - Geocoding
+      parameters:
+      - name: coords
+        in: query
+        required: true
+        description: Latitude and longitude as "lat,lng"
+        schema:
+          type: string
+        example: 37.3318,-122.0312
+      - name: region
+        in: query
+        schema:
+          type: string
+          enum:
+          - NA
+          - EU
+          - SA
+          default: NA
+      responses:
+        '200':
+          description: Reverse geocoded address
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddressResponse'
+components:
+  schemas:
+    GeocodeResponse:
+      type: object
+      properties:
+        Lat:
+          type: number
+        Lon:
+          type: number
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Quality:
+          type: string
+          enum:
+          - Exact
+          - Interpolated
+          - City
+          - Zip
+          - State
+          - Country
+    AddressResponse:
+      type: object
+      properties:
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token

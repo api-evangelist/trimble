@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics Users API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: Users
+  description: User and team management
+paths:
+  /projects/{projectId}/members:
+    get:
+      operationId: listProjectMembers
+      summary: List project members
+      description: Returns all users and their roles within a project.
+      tags:
+      - Users
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      responses:
+        '200':
+          description: Project members
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MemberListResponse'
+components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
+  schemas:
+    MemberListResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member'
+        totalCount:
+          type: integer
+    Member:
+      type: object
+      properties:
+        userId:
+          type: string
+        email:
+          type: string
+          format: email
+        displayName:
+          type: string
+        role:
+          type: string
+          enum:
+          - ADMIN
+          - MEMBER
+          - VIEWER
+        joinedAt:
+          type: string
+          format: date-time
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token

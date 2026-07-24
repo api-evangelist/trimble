@@ -1,0 +1,275 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics Routing API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: Routing
+  description: Route calculation and optimization
+paths:
+  /Service.svc/route:
+    get:
+      operationId: calculateRoute
+      summary: Calculate a route between stops
+      description: Calculates an optimized route for commercial vehicles between multiple stops. Returns mileage, drive time, toll costs, and turn-by-turn directions optimized for truck dimensions, weight, and hazmat restrictions.
+      tags:
+      - Routing
+      parameters:
+      - name: stops
+        in: query
+        required: true
+        description: 'Semicolon-delimited list of stops in "City,State" or lat/lng format. Example: "Dallas,TX;Chicago,IL;Detroit,MI"'
+        schema:
+          type: string
+        example: Dallas,TX;Chicago,IL
+      - name: vehicleType
+        in: query
+        schema:
+          type: string
+          enum:
+          - Truck
+          - LightTruck
+          - Auto
+          - Motorcycle
+          default: Truck
+      - name: routeType
+        in: query
+        schema:
+          type: string
+          enum:
+          - Practical
+          - Shortest
+          - Fastest
+          - Tolls
+          - Avoid53
+          default: Practical
+        description: Routing optimization type
+      - name: height
+        in: query
+        schema:
+          type: number
+        description: Vehicle height in feet
+        example: 13.5
+      - name: weight
+        in: query
+        schema:
+          type: number
+        description: Vehicle weight in pounds
+        example: 80000
+      - name: length
+        in: query
+        schema:
+          type: number
+        description: Vehicle length in feet
+        example: 53
+      - name: hazmat
+        in: query
+        schema:
+          type: string
+          enum:
+          - None
+          - General
+          - Explosive
+          - InhalationHazard
+          - Radioactive
+          - Flammable
+          - Corrosive
+          - Oxidizer
+          - Poisonous
+          default: None
+      - name: reportType
+        in: query
+        schema:
+          type: string
+          enum:
+          - Mileage
+          - Directions
+          - DriveTimeTable
+          - Detail
+          default: Mileage
+      - name: outputFormat
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      responses:
+        '200':
+          description: Route calculation results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RouteResponse'
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid API key
+  /Service.svc/mileage:
+    get:
+      operationId: getMileage
+      summary: Get mileage between stops
+      description: Returns the calculated mileage and driving time between stops using PC*MILER routing logic. Supports both practical (highway-preferred) and shortest routing for commercial vehicles.
+      tags:
+      - Routing
+      parameters:
+      - name: stops
+        in: query
+        required: true
+        schema:
+          type: string
+        example: Dallas,TX;Houston,TX
+      - name: vehicleType
+        in: query
+        schema:
+          type: string
+          enum:
+          - Truck
+          - LightTruck
+          - Auto
+          default: Truck
+      - name: routeType
+        in: query
+        schema:
+          type: string
+          enum:
+          - Practical
+          - Shortest
+          default: Practical
+      - name: outputFormat
+        in: query
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      responses:
+        '200':
+          description: Mileage results
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MileageResponse'
+components:
+  schemas:
+    StopPoint:
+      type: object
+      properties:
+        Address:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+    RouteLeg:
+      type: object
+      properties:
+        LegMiles:
+          type: number
+          description: Leg distance in miles
+        LegHours:
+          type: number
+          description: Leg drive time in hours
+        StartPoint:
+          $ref: '#/components/schemas/StopPoint'
+        EndPoint:
+          $ref: '#/components/schemas/StopPoint'
+    DirectionStep:
+      type: object
+      properties:
+        Direction:
+          type: string
+        Distance:
+          type: number
+        DriveTime:
+          type: string
+        RoadName:
+          type: string
+        State:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+    RouteResponse:
+      type: object
+      properties:
+        RouteReports:
+          type: array
+          items:
+            type: object
+            properties:
+              ReportLines:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RouteLeg'
+        TMiles:
+          type: number
+          description: Total route miles
+        THours:
+          type: number
+          description: Total drive hours
+        Tolls:
+          type: object
+          properties:
+            TotalCost:
+              type: number
+            Currency:
+              type: string
+        Directions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectionStep'
+    ErrorResponse:
+      type: object
+      properties:
+        Description:
+          type: string
+        ExceptionType:
+          type: string
+        StatusCode:
+          type: integer
+    MileageResponse:
+      type: object
+      properties:
+        Mileage:
+          type: number
+          description: Miles between stops
+        Hours:
+          type: number
+          description: Drive time in hours
+        FuelCost:
+          type: number
+          description: Estimated fuel cost in USD
+        RouteType:
+          type: string
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token

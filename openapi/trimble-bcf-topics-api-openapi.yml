@@ -1,0 +1,291 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: BCF Topics
+  description: Building Collaboration Format issue tracking
+paths:
+  /projects/{projectId}/topics:
+    get:
+      operationId: listBCFTopics
+      summary: List BCF topics (issues)
+      description: Returns BIM Collaboration Format (BCF) topics for a project. BCF topics represent issues, clashes, comments, and design queries tied to specific locations or objects in BIM models.
+      tags:
+      - BCF Topics
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: topicType
+        in: query
+        schema:
+          type: string
+          enum:
+          - ISSUE
+          - REQUEST_FOR_INFORMATION
+          - CLASH
+          - COMMENT
+          - TASK
+      - name: topicStatus
+        in: query
+        schema:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - RESOLVED
+          - CLOSED
+      - name: assignedTo
+        in: query
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      responses:
+        '200':
+          description: List of BCF topics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TopicListResponse'
+    post:
+      operationId: createBCFTopic
+      summary: Create a BCF topic
+      description: Creates a new BCF topic (issue) in the project.
+      tags:
+      - BCF Topics
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicCreate'
+      responses:
+        '201':
+          description: Topic created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+  /projects/{projectId}/topics/{topicGuid}:
+    get:
+      operationId: getBCFTopic
+      summary: Get a BCF topic
+      description: Returns details for a specific BCF topic.
+      tags:
+      - BCF Topics
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: topicGuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      responses:
+        '200':
+          description: BCF topic details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+    put:
+      operationId: updateBCFTopic
+      summary: Update a BCF topic
+      description: Updates a BCF topic status, assignee, or other fields.
+      tags:
+      - BCF Topics
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: topicGuid
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TopicUpdate'
+      responses:
+        '200':
+          description: Topic updated
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Topic'
+components:
+  schemas:
+    TopicListResponse:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+        totalCount:
+          type: integer
+    TopicUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - RESOLVED
+          - CLOSED
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+    Topic:
+      type: object
+      description: BCF topic (issue) in BIM Collaboration Format
+      properties:
+        guid:
+          type: string
+          format: uuid
+        topicType:
+          type: string
+          enum:
+          - ISSUE
+          - REQUEST_FOR_INFORMATION
+          - CLASH
+          - COMMENT
+          - TASK
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - RESOLVED
+          - CLOSED
+        title:
+          type: string
+        description:
+          type: string
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+        assignedTo:
+          type: string
+          description: User email or ID
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
+        createdDate:
+          type: string
+          format: date-time
+        modifiedDate:
+          type: string
+          format: date-time
+        creationAuthor:
+          type: string
+        modifiedAuthor:
+          type: string
+        viewpoints:
+          type: array
+          items:
+            type: object
+            properties:
+              guid:
+                type: string
+                format: uuid
+              snapshotUrl:
+                type: string
+                format: uri
+        referenceLinks:
+          type: array
+          items:
+            type: string
+    TopicCreate:
+      type: object
+      required:
+      - title
+      - topicType
+      - topicStatus
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicType:
+          type: string
+          enum:
+          - ISSUE
+          - REQUEST_FOR_INFORMATION
+          - CLASH
+          - COMMENT
+          - TASK
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          default: OPEN
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+          default: NORMAL
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token

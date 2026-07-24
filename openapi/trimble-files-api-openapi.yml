@@ -1,0 +1,174 @@
+openapi: 3.1.0
+info:
+  title: Trimble Connect BCF Topics Files API
+  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  version: '2.0'
+  contact:
+    name: Trimble Developer Support
+    url: https://developer.trimble.com
+  license:
+    name: Trimble Developer Terms
+    url: https://www.trimble.com/legal/developer-terms
+servers:
+- url: https://app.connect.trimble.com/tc/api/2.0
+  description: Trimble Connect Production API
+security:
+- BearerAuth: []
+tags:
+- name: Files
+  description: File and document management
+paths:
+  /projects/{projectId}/files:
+    get:
+      operationId: listProjectFiles
+      summary: List project files
+      description: Returns files and folders within a project directory.
+      tags:
+      - Files
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: path
+        in: query
+        schema:
+          type: string
+        description: Parent folder path
+        example: /Models/Structural
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          default: 50
+      responses:
+        '200':
+          description: List of files
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileListResponse'
+    post:
+      operationId: uploadFile
+      summary: Upload a file to a project
+      description: Uploads a file to the specified project folder. Supports BIM model files (IFC, RVT, SKP, NWD, NWC), drawings (PDF, DWG), and documents.
+      tags:
+      - Files
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      requestBody:
+        required: true
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              required:
+              - file
+              properties:
+                file:
+                  type: string
+                  format: binary
+                  description: File binary content
+                path:
+                  type: string
+                  description: Target folder path
+                description:
+                  type: string
+      responses:
+        '201':
+          description: File uploaded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+  /projects/{projectId}/files/{fileId}:
+    get:
+      operationId: getFile
+      summary: Get file metadata
+      description: Returns metadata for a specific file.
+      tags:
+      - Files
+      parameters:
+      - $ref: '#/components/parameters/ProjectId'
+      - name: fileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: File metadata
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/File'
+components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
+  schemas:
+    File:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        path:
+          type: string
+          description: Full folder path
+        fileType:
+          type: string
+          enum:
+          - FILE
+          - FOLDER
+        contentType:
+          type: string
+          description: MIME type
+        size:
+          type: integer
+          description: File size in bytes
+        version:
+          type: integer
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+        createdBy:
+          type: string
+        description:
+          type: string
+        downloadUrl:
+          type: string
+          format: uri
+          description: Pre-signed download URL (time-limited)
+        thumbnailUrl:
+          type: string
+          format: uri
+    FileListResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        totalCount:
+          type: integer
+        path:
+          type: string
+  securitySchemes:
+    BearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Trimble Identity OAuth2 Bearer token
