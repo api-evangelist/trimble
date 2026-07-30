@@ -8,7 +8,20 @@ description: >-
   Trimble Maps), building information modeling (Tekla, SketchUp), fleet management (TruckMate, TMT, CoPilot), precision
   positioning (Mobile Manager, TAP Store), and construction ERP (Viewpoint). Publicly traded on NASDAQ as TRMB.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Enterprise · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/trimble.png
 tags:
   - Construction
   - Transportation
@@ -24,192 +37,306 @@ created: '2026-05-03'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: trimble:trimble-connect
-    name: Trimble Connect API
-    description: >-
-      The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform.
-      Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration
-      features for construction project management. Acts as the BIM collaboration hub integrating Tekla, SketchUp, and
-      third-party tools.
-    humanURL: https://developer.trimble.com/docs/connect
-    tags:
-      - Construction
-      - Collaboration
-      - BIM
-      - Cloud
-      - Document Management
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/connect
-      - type: OpenAPI
-        url: openapi/trimble-connect-openapi.yml
-      - type: SpectralRules
-        url: rules/trimble-rules.yml
-      - type: JSONSchema
-        url: json-schema/trimble-project-schema.json
-      - type: JSONStructure
-        url: json-structure/trimble-project-structure.json
-      - type: JSONLDContext
-        url: json-ld/trimble-context.jsonld
-  - aid: trimble:trimble-maps
-    name: Trimble Maps API
-    description: >-
-      The Trimble Maps API (formerly ALK Technologies PC*MILER) provides interactive mapping and routing solutions
-      optimized for commercial vehicles and transportation. Enables truck-specific routing, geocoding, map tile
-      rendering, and turn-by-turn navigation services across North America, Europe, and global markets.
-    humanURL: https://developer.trimble.com/docs/maps
-    tags:
-      - Mapping
-      - Transportation
-      - Routing
-      - Geospatial
-      - Commercial Vehicles
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/maps
-      - type: DeveloperPortal
-        url: https://developer.trimblemaps.com/
-      - type: OpenAPI
-        url: openapi/trimble-maps-openapi.yml
-      - type: JSONSchema
-        url: json-schema/trimble-route-schema.json
-      - type: JSONStructure
-        url: json-structure/trimble-route-structure.json
-  - aid: trimble:trimble-pcmiler
-    name: Trimble PC*MILER API
-    description: >-
-      PC*MILER provides commercial vehicle routing and distance calculation APIs for logistics, freight, and
-      transportation management. Delivers mileage, routing, tolls, and fuel optimization for trucking operations across
-      North America, Europe, and global markets.
-    humanURL: https://developer.trimble.com/docs/pc-miler
-    tags:
-      - Transportation
-      - Routing
-      - Logistics
-      - Distance Calculation
-      - Commercial Vehicles
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/pc-miler
-  - aid: trimble:trimble-tekla
-    name: Tekla API
-    description: >-
-      The Tekla API provides programmatic access to Tekla Structures, a leading Building Information Modeling (BIM)
-      software for structural engineering and detailing. Enables custom model creation, data extraction, and workflow
-      automation for steel, concrete, and timber construction.
-    humanURL: https://developer.tekla.com/
-    tags:
-      - BIM
-      - Structural Engineering
-      - Construction
-      - Modeling
-    properties:
-      - type: Documentation
-        url: https://developer.tekla.com/
-      - type: DeveloperPortal
-        url: https://developer.tekla.com/
-  - aid: trimble:trimble-sketchup
-    name: SketchUp API
-    description: >-
-      The SketchUp API enables extension development for Trimble SketchUp, a widely-used 3D modeling and design tool.
-      Supports Ruby and JavaScript APIs for building custom tools, plugins, and integrations for architecture, interior
-      design, and engineering workflows.
-    humanURL: https://developer.sketchup.com/
-    tags:
-      - 3D Modeling
-      - Architecture
-      - Design
-      - Plugins
-    properties:
-      - type: Documentation
-        url: https://developer.sketchup.com/
-  - aid: trimble:trimble-projectsight
-    name: ProjectSight API
-    description: >-
-      The Trimble ProjectSight API provides portfolio and project information management for construction. Enables
-      programmatic access to project data, submittals, RFIs, and document workflows for construction project management.
-    humanURL: https://developer.trimble.com/docs/projectsight
-    tags:
-      - Construction
-      - Project Management
-      - Documents
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/projectsight
-  - aid: trimble:trimble-truckmate
-    name: TruckMate API
-    description: >-
-      The TruckMate REST API provides transactional and configuration operations for Trimble's transportation management
-      system (TMS). Enables freight brokers, carriers, and logistics operators to automate dispatch, load management,
-      and billing workflows.
-    humanURL: https://developer.trimble.com/docs/truckmate
-    tags:
-      - Transportation
-      - TMS
-      - Logistics
-      - Freight
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/truckmate
-  - aid: trimble:trimble-copilot
-    name: CoPilot Navigation API
-    description: >-
-      The Trimble CoPilot Navigation API enables in-cab navigation integration with cloud-based services for commercial
-      vehicle fleets. Provides route delivery, real-time traffic, and truck-specific navigation for driver mobile
-      applications.
-    humanURL: https://developer.trimble.com/docs/copilot
-    tags:
-      - Navigation
-      - Transportation
-      - Trucking
-      - In-Cab
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/copilot
-      - type: DeveloperPortal
-        url: https://developer.trimblemaps.com/copilot-navigation/
-  - aid: trimble:trimble-tmt
-    name: TMT Fleet Maintenance API
-    description: >-
-      The TMT (Trimble Maintenance Technology) REST API provides fleet maintenance management operations for commercial
-      vehicle fleets. Enables work order management, preventive maintenance scheduling, parts inventory, and repair
-      tracking.
-    humanURL: https://developer.trimble.com/docs/tmt
-    tags:
-      - Fleet Management
-      - Maintenance
-      - Transportation
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/tmt
-  - aid: trimble:trimble-viewpoint
-    name: Viewpoint Construction ERP APIs
-    description: >-
-      The Viewpoint suite of construction ERP APIs includes Jobpac Connect, Spectrum, and Vista. These REST and web
-      service APIs provide accounting, HR, project management, and operations integrations for construction firms.
-    humanURL: https://developer.trimble.com/docs/vista
-    tags:
-      - Construction ERP
-      - Accounting
-      - HR
-      - Finance
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/vista
-  - aid: trimble:trimble-identity
-    name: Trimble Identity API
-    description: >-
-      Trimble Identity provides OAuth 2.0 / OpenID Connect authentication and authorization for all Trimble developer
-      applications. Enables single sign-on across the Trimble platform for web, mobile, and desktop applications.
-    humanURL: https://developer.trimble.com/docs/authentication
-    tags:
-      - Authentication
-      - OAuth 2.0
-      - Identity
-      - Security
-    properties:
-      - type: Documentation
-        url: https://developer.trimble.com/docs/authentication
+- aid: trimble:trimble-pcmiler
+  name: Trimble PC*MILER API
+  description: >-
+    PC*MILER provides commercial vehicle routing and distance calculation APIs for logistics, freight,
+    and transportation management. Delivers mileage, routing, tolls, and fuel optimization for trucking
+    operations across North America, Europe, and global markets.
+  humanURL: https://developer.trimble.com/docs/pc-miler
+  tags:
+  - Transportation
+  - Routing
+  - Logistics
+  - Distance Calculation
+  - Commercial Vehicles
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/pc-miler
+- aid: trimble:trimble-tekla
+  name: Tekla API
+  description: >-
+    The Tekla API provides programmatic access to Tekla Structures, a leading Building Information Modeling
+    (BIM) software for structural engineering and detailing. Enables custom model creation, data extraction,
+    and workflow automation for steel, concrete, and timber construction.
+  humanURL: https://developer.tekla.com/
+  tags:
+  - BIM
+  - Structural Engineering
+  - Construction
+  - Modeling
+  properties:
+  - type: Documentation
+    url: https://developer.tekla.com/
+  - type: DeveloperPortal
+    url: https://developer.tekla.com/
+- aid: trimble:trimble-sketchup
+  name: SketchUp API
+  description: >-
+    The SketchUp API enables extension development for Trimble SketchUp, a widely-used 3D modeling and
+    design tool. Supports Ruby and JavaScript APIs for building custom tools, plugins, and integrations
+    for architecture, interior design, and engineering workflows.
+  humanURL: https://developer.sketchup.com/
+  tags:
+  - 3D Modeling
+  - Architecture
+  - Design
+  - Plugins
+  properties:
+  - type: Documentation
+    url: https://developer.sketchup.com/
+- aid: trimble:trimble-projectsight
+  name: ProjectSight API
+  description: >-
+    The Trimble ProjectSight API provides portfolio and project information management for construction.
+    Enables programmatic access to project data, submittals, RFIs, and document workflows for construction
+    project management.
+  humanURL: https://developer.trimble.com/docs/projectsight
+  tags:
+  - Construction
+  - Project Management
+  - Documents
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/projectsight
+- aid: trimble:trimble-truckmate
+  name: TruckMate API
+  description: >-
+    The TruckMate REST API provides transactional and configuration operations for Trimble's transportation
+    management system (TMS). Enables freight brokers, carriers, and logistics operators to automate dispatch,
+    load management, and billing workflows.
+  humanURL: https://developer.trimble.com/docs/truckmate
+  tags:
+  - Transportation
+  - TMS
+  - Logistics
+  - Freight
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/truckmate
+- aid: trimble:trimble-copilot
+  name: CoPilot Navigation API
+  description: >-
+    The Trimble CoPilot Navigation API enables in-cab navigation integration with cloud-based services
+    for commercial vehicle fleets. Provides route delivery, real-time traffic, and truck-specific navigation
+    for driver mobile applications.
+  humanURL: https://developer.trimble.com/docs/copilot
+  tags:
+  - Navigation
+  - Transportation
+  - Trucking
+  - In-Cab
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/copilot
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/copilot-navigation/
+- aid: trimble:trimble-tmt
+  name: TMT Fleet Maintenance API
+  description: >-
+    The TMT (Trimble Maintenance Technology) REST API provides fleet maintenance management operations
+    for commercial vehicle fleets. Enables work order management, preventive maintenance scheduling, parts
+    inventory, and repair tracking.
+  humanURL: https://developer.trimble.com/docs/tmt
+  tags:
+  - Fleet Management
+  - Maintenance
+  - Transportation
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/tmt
+- aid: trimble:trimble-viewpoint
+  name: Viewpoint Construction ERP APIs
+  description: >-
+    The Viewpoint suite of construction ERP APIs includes Jobpac Connect, Spectrum, and Vista. These REST
+    and web service APIs provide accounting, HR, project management, and operations integrations for construction
+    firms.
+  humanURL: https://developer.trimble.com/docs/vista
+  tags:
+  - Construction ERP
+  - Accounting
+  - HR
+  - Finance
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/vista
+- aid: trimble:trimble-identity
+  name: Trimble Identity API
+  description: >-
+    Trimble Identity provides OAuth 2.0 / OpenID Connect authentication and authorization for all Trimble
+    developer applications. Enables single sign-on across the Trimble platform for web, mobile, and desktop
+    applications.
+  humanURL: https://developer.trimble.com/docs/authentication
+  tags:
+  - Authentication
+  - OAuth 2.0
+  - Identity
+  - Security
+  properties:
+  - type: Documentation
+    url: https://developer.trimble.com/docs/authentication
+- aid: trimble:trimble-bcf-topics-api
+  name: Trimble BCF Topics API
+  description: Building Collaboration Format issue tracking
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - BCF Topics
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-bcf-topics-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
+- aid: trimble:trimble-files-api
+  name: Trimble Files API
+  description: File and document management
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - Files
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-files-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
+- aid: trimble:trimble-geocoding-api
+  name: Trimble Geocoding API
+  description: Address and coordinate conversion
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - Geocoding
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-geocoding-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
+- aid: trimble:trimble-projects-api
+  name: Trimble Projects API
+  description: Project management
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - Projects
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-projects-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
+- aid: trimble:trimble-routing-api
+  name: Trimble Routing API
+  description: Route calculation and optimization
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - Routing
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-routing-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
+- aid: trimble:trimble-users-api
+  name: Trimble Users API
+  description: User and team management
+  humanURL: https://developer.trimble.com/docs/connect
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/trimble-users-api-openapi.yml
+  - type: Documentation
+    url: https://developer.trimble.com/docs/connect
+  - type: SpectralRules
+    url: rules/trimble-rules.yml
+  - type: JSONSchema
+    url: json-schema/trimble-project-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-project-structure.json
+  - type: JSONLDContext
+    url: json-ld/trimble-context.jsonld
+  - type: Documentation
+    url: https://developer.trimble.com/docs/maps
+  - type: DeveloperPortal
+    url: https://developer.trimblemaps.com/
+  - type: JSONSchema
+    url: json-schema/trimble-route-schema.json
+  - type: JSONStructure
+    url: json-structure/trimble-route-structure.json
 features:
   - BIM collaboration and model viewing via Trimble Connect
   - Commercial vehicle routing and mileage with PC*MILER
