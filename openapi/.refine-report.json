@@ -1,0 +1,24 @@
+{
+  "provider": "trimble",
+  "sources": [
+    "trimble-bcf-topics-api-openapi.yml",
+    "trimble-files-api-openapi.yml",
+    "trimble-geocoding-api-openapi.yml",
+    "trimble-projects-api-openapi.yml",
+    "trimble-routing-api-openapi.yml",
+    "trimble-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "trimble-bcf-topics-api-openapi.yml",
+    "trimble-files-api-openapi.yml",
+    "trimble-geocoding-api-openapi.yml",
+    "trimble-projects-api-openapi.yml",
+    "trimble-routing-api-openapi.yml",
+    "trimble-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
