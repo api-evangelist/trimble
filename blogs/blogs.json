@@ -5,7 +5,7 @@
       "source": "https://news.trimble.com/news-releases?pagetemplate=rss",
       "feed_url": "https://news.trimble.com/news-releases?pagetemplate=rss",
       "title": "",
-      "saved": 0,
+      "saved": 4,
       "method": "feed"
     },
     {
@@ -13,9 +13,10 @@
       "feed_url": "https://modus.trimble.com/",
       "title": "",
       "saved": 0,
-      "method": "none"
+      "method": "none",
+      "error": "parse_failed"
     }
   ],
-  "post_count": 30,
-  "fetched": "2026-08-06T14:08:46Z"
+  "post_count": 34,
+  "fetched": "2026-08-15T12:11:08Z"
 }
