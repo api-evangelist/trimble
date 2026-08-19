@@ -1,0 +1,139 @@
+{
+  "item": [
+    {
+      "id": "17f06d1d-b40d-498a-8bce-91d66d85cee6",
+      "name": "Users",
+      "description": {
+        "content": "User and team management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9296f20f-2043-4f85-86f8-429b5b4954d2",
+          "name": "List project members",
+          "request": {
+            "name": "List project members",
+            "description": {
+              "content": "Returns all users and their roles within a project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "members"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ec0b4a79-15d9-450c-be51-96b24cc8ced7",
+              "name": "Project members",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "members"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"members\": [\n    {\n      \"userId\": \"string\",\n      \"email\": \"agSbuJEgoQKJKFE@ohCujZKnkwcMVGjv.uhhm\",\n      \"displayName\": \"string\",\n      \"role\": \"VIEWER\",\n      \"joinedAt\": \"1996-09-14T12:19:36.654Z\"\n    },\n    {\n      \"userId\": \"string\",\n      \"email\": \"UR0o@YJOJkzpyZosaf.fh\",\n      \"displayName\": \"string\",\n      \"role\": \"ADMIN\",\n      \"joinedAt\": \"2004-02-12T07:32:23.418Z\"\n    }\n  ],\n  \"totalCount\": 580\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3017aee9-4c2b-4cb1-b7b2-32fdc74f32f9",
+    "name": "Trimble Connect BCF Topics Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,560 @@
+{
+  "item": [
+    {
+      "id": "3f83d847-4570-4285-8afb-928f98364211",
+      "name": "Projects",
+      "description": {
+        "content": "Project management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "735885d5-d448-48fa-b3f8-3bb0f44fd415",
+          "name": "List projects",
+          "request": {
+            "name": "List projects",
+            "description": {
+              "content": "Returns a list of Trimble Connect projects accessible to the authenticated user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "includeDeleted",
+                  "value": "false"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "dd2a7d2e-090d-4030-9906-5e216a8a54f2",
+              "name": "List of projects",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDeleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"projects\": [\n    {\n      \"id\": \"e2e9d6e1-78bd-c14a-9c95-624b9f457341\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"ACTIVE\",\n      \"type\": \"CONSTRUCTION\",\n      \"location\": \"string\",\n      \"createdAt\": \"2017-07-06T17:17:25.576Z\",\n      \"updatedAt\": \"2020-10-16T23:31:12.833Z\",\n      \"createdBy\": \"string\",\n      \"thumbnail\": \"http://lpJIY.lfsi8nwpIvvLRBehqcPV7FUz5bNhkI2U-GWABBFeV.ZyvyDJ,E8VLOPqqL\",\n      \"memberCount\": 3652,\n      \"fileCount\": 9028\n    },\n    {\n      \"id\": \"d5228d77-a93c-7b06-0ca7-4fa041e1cb2d\",\n      \"name\": \"string\",\n      \"description\": \"string\",\n      \"status\": \"ARCHIVED\",\n      \"type\": \"ENGINEERING\",\n      \"location\": \"string\",\n      \"createdAt\": \"1958-10-03T03:11:24.744Z\",\n      \"updatedAt\": \"2004-09-30T09:31:24.733Z\",\n      \"createdBy\": \"string\",\n      \"thumbnail\": \"https://UjwYSDwXMn.qfwsB-S,gPend7w9UEUIW4FoWYlCy4nKQBcId9I-soTA,Crb+v0PrY0Ln9EvA7ZazRpwNgCny36\",\n      \"memberCount\": 2902,\n      \"fileCount\": 2966\n    }\n  ],\n  \"totalCount\": 8510,\n  \"page\": 3039,\n  \"pageSize\": 7291\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "96689b0a-a548-424d-b719-bc0a15002c00",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "includeDeleted",
+                      "value": "false"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fbabb245-0e05-4a10-9c64-25a91d52a303",
+          "name": "Create a project",
+          "request": {
+            "name": "Create a project",
+            "description": {
+              "content": "Creates a new Trimble Connect project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0f3da128-94c4-49e8-b3b8-5b9dc5652f10",
+              "name": "Project created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"type\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"61e6ca96-4f9e-a59d-a035-91c8ca870292\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"ENGINEERING\",\n  \"location\": \"string\",\n  \"createdAt\": \"2004-05-14T18:04:27.536Z\",\n  \"updatedAt\": \"2014-02-10T03:09:23.697Z\",\n  \"createdBy\": \"string\",\n  \"thumbnail\": \"http://jDuzCfKeeEkzsZmyvZrrWWkYFbwWXmH.kxurr-t2NxYF4f9voLQYyo5Mcx6Q4IbKQC9DddJvcNbm,GMCs\",\n  \"memberCount\": 8925,\n  \"fileCount\": 2818\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "456d2599-5216-4ae1-93ac-e3ddb31bb717",
+          "name": "Get project details",
+          "request": {
+            "name": "Get project details",
+            "description": {
+              "content": "Returns detailed information for a specific project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "479d8ec7-348c-40c9-89d7-d5ae4b65b129",
+              "name": "Project details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"61e6ca96-4f9e-a59d-a035-91c8ca870292\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"ENGINEERING\",\n  \"location\": \"string\",\n  \"createdAt\": \"2004-05-14T18:04:27.536Z\",\n  \"updatedAt\": \"2014-02-10T03:09:23.697Z\",\n  \"createdBy\": \"string\",\n  \"thumbnail\": \"http://jDuzCfKeeEkzsZmyvZrrWWkYFbwWXmH.kxurr-t2NxYF4f9voLQYyo5Mcx6Q4IbKQC9DddJvcNbm,GMCs\",\n  \"memberCount\": 8925,\n  \"fileCount\": 2818\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f1e1851f-0d11-42e2-b7b9-07328d5dcbc3",
+              "name": "Project not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3691de1d-6422-4848-b3d4-37947869e9c4",
+          "name": "Update a project",
+          "request": {
+            "name": "Update a project",
+            "description": {
+              "content": "Updates mutable project properties such as name, description, and status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5f9ac52f-cb86-449d-919d-4281700c945b",
+              "name": "Project updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"status\": \"<string>\",\n  \"location\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"61e6ca96-4f9e-a59d-a035-91c8ca870292\",\n  \"name\": \"string\",\n  \"description\": \"string\",\n  \"status\": \"ACTIVE\",\n  \"type\": \"ENGINEERING\",\n  \"location\": \"string\",\n  \"createdAt\": \"2004-05-14T18:04:27.536Z\",\n  \"updatedAt\": \"2014-02-10T03:09:23.697Z\",\n  \"createdBy\": \"string\",\n  \"thumbnail\": \"http://jDuzCfKeeEkzsZmyvZrrWWkYFbwWXmH.kxurr-t2NxYF4f9voLQYyo5Mcx6Q4IbKQC9DddJvcNbm,GMCs\",\n  \"memberCount\": 8925,\n  \"fileCount\": 2818\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "f5b4d1fe-c651-49c3-959f-b6e370b6f759",
+    "name": "Trimble Connect BCF Topics Projects API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

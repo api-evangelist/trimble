@@ -1,0 +1,120 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Connect BCF Topics Routing API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Routing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Calculate a route between stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/Service.svc/route",
+            "params": [
+              {
+                "name": "stops",
+                "value": "Dallas,TX;Chicago,IL",
+                "type": "query",
+                "description": "Semicolon-delimited list of stops in \"City,State\" or lat/lng format. Example: \"Dallas,TX;Chicago,IL;Detroit,MI\""
+              },
+              {
+                "name": "vehicleType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "routeType",
+                "value": "",
+                "type": "query",
+                "description": "Routing optimization type"
+              },
+              {
+                "name": "height",
+                "value": "13.5",
+                "type": "query",
+                "description": "Vehicle height in feet"
+              },
+              {
+                "name": "weight",
+                "value": "80000",
+                "type": "query",
+                "description": "Vehicle weight in pounds"
+              },
+              {
+                "name": "length",
+                "value": "53",
+                "type": "query",
+                "description": "Vehicle length in feet"
+              },
+              {
+                "name": "hazmat",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "reportType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Calculates an optimized route for commercial vehicles between multiple stops. Returns mileage, drive time, toll costs, and turn-by-turn directions optimized for truck dimensions, weight, and hazmat restrictions."
+        },
+        {
+          "info": {
+            "name": "Get mileage between stops",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/Service.svc/mileage",
+            "params": [
+              {
+                "name": "stops",
+                "value": "Dallas,TX;Houston,TX",
+                "type": "query"
+              },
+              {
+                "name": "vehicleType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "routeType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns the calculated mileage and driving time between stops using PC*MILER routing logic. Supports both practical (highway-preferred) and shortest routing for commercial vehicles."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

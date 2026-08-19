@@ -1,0 +1,253 @@
+{
+  "item": [
+    {
+      "id": "265fd405-da06-4186-b224-1458df1102c3",
+      "name": "Geocoding",
+      "description": {
+        "content": "Address and coordinate conversion",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3def105b-f8a6-4471-97c2-2eff0a9feb6c",
+          "name": "Geocode an address",
+          "request": {
+            "name": "Geocode an address",
+            "description": {
+              "content": "Converts a street address or city/state/zip to geographic coordinates using Trimble's commercial vehicle map database.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "geocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "addr",
+                  "value": "<string>",
+                  "description": "(Required) Address to geocode (street, city, state/province, zip, country)"
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "NA",
+                  "description": "Geographic region"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "91d8b688-7952-4177-9d6a-9f0b9eff307b",
+              "name": "Geocoded location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "geocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "addr",
+                      "value": "1 Infinite Loop, Cupertino, CA 95014"
+                    },
+                    {
+                      "key": "region",
+                      "value": "NA"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Lat\": 9434.433149484681,\n  \"Lon\": 7059.219380894499,\n  \"Address\": \"string\",\n  \"City\": \"string\",\n  \"State\": \"string\",\n  \"Zip\": \"string\",\n  \"Country\": \"string\",\n  \"Quality\": \"State\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a888d304-4a52-492c-9fbd-9e2ead5b20d9",
+          "name": "Reverse geocode coordinates to address",
+          "request": {
+            "name": "Reverse geocode coordinates to address",
+            "description": {
+              "content": "Converts geographic coordinates (lat/lng) to a nearest street address.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "reverseGeocode"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "coords",
+                  "value": "<string>",
+                  "description": "(Required) Latitude and longitude as \"lat,lng\""
+                },
+                {
+                  "disabled": false,
+                  "key": "region",
+                  "value": "NA"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ca70d619-caae-460e-b528-81dcbe647130",
+              "name": "Reverse geocoded address",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "reverseGeocode"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "coords",
+                      "value": "37.3318,-122.0312"
+                    },
+                    {
+                      "key": "region",
+                      "value": "NA"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Address\": \"string\",\n  \"City\": \"string\",\n  \"State\": \"string\",\n  \"Zip\": \"string\",\n  \"Country\": \"string\",\n  \"Coords\": {\n    \"Lat\": 83.78200070334117,\n    \"Lon\": -147.11359389689184\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aeba2301-3f53-4842-95cd-fbbfa87196a9",
+    "name": "Trimble Connect BCF Topics Geocoding API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

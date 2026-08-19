@@ -1,0 +1,438 @@
+{
+  "item": [
+    {
+      "id": "b4d452ee-9d46-4a7f-b066-d7414d200e49",
+      "name": "Files",
+      "description": {
+        "content": "File and document management",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a079211-7af4-4b03-b49b-0572ed023995",
+          "name": "List project files",
+          "request": {
+            "name": "List project files",
+            "description": {
+              "content": "Returns files and folders within a project directory.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "path",
+                  "value": "<string>",
+                  "description": "Parent folder path"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "50"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "99e69c25-ef4f-40ef-a7fa-ebfbc277333f",
+              "name": "List of files",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "path",
+                      "value": "/Models/Structural"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "50"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"files\": [\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"fileType\": \"FOLDER\",\n      \"contentType\": \"string\",\n      \"size\": 9236,\n      \"version\": 1009,\n      \"createdAt\": \"2017-10-17T18:18:42.295Z\",\n      \"updatedAt\": \"1955-12-20T19:33:06.845Z\",\n      \"createdBy\": \"string\",\n      \"description\": \"string\",\n      \"downloadUrl\": \"http://rYPOvvdZBD.jubAgYXleyUYWKrEENM6eFTgJb.ZRaXLj26oW,bx1q\",\n      \"thumbnailUrl\": \"http://taxlljiEQwnOjVTdJAqdzHfeLijXA.auFn2v+8fzzoeNUm,UbF95NzK4HKgpyYMBu-Ym\"\n    },\n    {\n      \"id\": \"string\",\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"fileType\": \"FOLDER\",\n      \"contentType\": \"string\",\n      \"size\": 4935,\n      \"version\": 4433,\n      \"createdAt\": \"1988-11-17T04:25:57.026Z\",\n      \"updatedAt\": \"2021-07-04T11:18:49.109Z\",\n      \"createdBy\": \"string\",\n      \"description\": \"string\",\n      \"downloadUrl\": \"https://hjuT.qmEXdNQ2MesAUe5g1YriUZ.wXcmRIiOjbDAPamHcuW6M0PPe7\",\n      \"thumbnailUrl\": \"http://vkJheRjFG.fitRUTIkIqgKTAxqo-xm0SrD,Aggh3PwpoWhc4kFVW\"\n    }\n  ],\n  \"totalCount\": 2627,\n  \"path\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dbad3216-aadf-4156-a715-9b6708ee0ea1",
+          "name": "Upload a file to a project",
+          "request": {
+            "name": "Upload a file to a project",
+            "description": {
+              "content": "Uploads a file to the specified project folder. Supports BIM model files (IFC, RVT, SKP, NWD, NWC), drawings (PDF, DWG), and documents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "multipart/form-data"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "description": "(Required) File binary content"
+                },
+                {
+                  "key": "path",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": "Target folder path"
+                },
+                {
+                  "key": "description",
+                  "value": "<string>",
+                  "type": "text",
+                  "description": ""
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "48f83d1e-3406-49c6-97b6-15b29a9963db",
+              "name": "File uploaded",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "formdata",
+                  "formdata": [
+                    {
+                      "description": {
+                        "content": "(Required) File binary content",
+                        "type": "text/plain"
+                      },
+                      "key": "file",
+                      "value": "<binary>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "Target folder path",
+                        "type": "text/plain"
+                      },
+                      "key": "path",
+                      "value": "<string>",
+                      "type": "text"
+                    },
+                    {
+                      "description": {
+                        "content": "",
+                        "type": "text/plain"
+                      },
+                      "key": "description",
+                      "value": "<string>",
+                      "type": "text"
+                    }
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"fileType\": \"FOLDER\",\n  \"contentType\": \"string\",\n  \"size\": 2668,\n  \"version\": 5177,\n  \"createdAt\": \"1990-06-24T07:51:12.643Z\",\n  \"updatedAt\": \"2004-02-06T22:11:24.117Z\",\n  \"createdBy\": \"string\",\n  \"description\": \"string\",\n  \"downloadUrl\": \"https://inEpdIeyFTLkiTtgeTBhyVQkDyNDZ.uswsrDrYASVe9prKzDpXlod-ujL53,LEqv7\",\n  \"thumbnailUrl\": \"http://muXWmGOxwzdFNVI.jupiqWaaNnkW\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf0d361c-3fbe-4d54-9baa-9382a07d0ac7",
+          "name": "Get file metadata",
+          "request": {
+            "name": "Get file metadata",
+            "description": {
+              "content": "Returns metadata for a specific file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "files",
+                ":fileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8218bf84-bda7-47bc-8678-e5e9e327ca84",
+              "name": "File metadata",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"fileType\": \"FOLDER\",\n  \"contentType\": \"string\",\n  \"size\": 2668,\n  \"version\": 5177,\n  \"createdAt\": \"1990-06-24T07:51:12.643Z\",\n  \"updatedAt\": \"2004-02-06T22:11:24.117Z\",\n  \"createdBy\": \"string\",\n  \"description\": \"string\",\n  \"downloadUrl\": \"https://inEpdIeyFTLkiTtgeTBhyVQkDyNDZ.uswsrDrYASVe9prKzDpXlod-ujL53,LEqv7\",\n  \"thumbnailUrl\": \"http://muXWmGOxwzdFNVI.jupiqWaaNnkW\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "098f0b35-9fe8-4e57-b356-4bbdbb3f19ac",
+    "name": "Trimble Connect BCF Topics Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

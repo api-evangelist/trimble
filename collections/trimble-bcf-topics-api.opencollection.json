@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Connect BCF Topics API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BCF Topics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List BCF topics (issues)",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "topicStatus",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "assignedTo",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns BIM Collaboration Format (BCF) topics for a project. BCF topics represent issues, clashes, comments, and design queries tied to specific locations or objects in BIM models."
+        },
+        {
+          "info": {
+            "name": "Create a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new BCF topic (issue) in the project."
+        },
+        {
+          "info": {
+            "name": "Get a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics/:topicGuid",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicGuid",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns details for a specific BCF topic."
+        },
+        {
+          "info": {
+            "name": "Update a BCF topic",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/topics/:topicGuid",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "topicGuid",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a BCF topic status, assignee, or other fields."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

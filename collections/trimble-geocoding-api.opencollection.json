@@ -1,0 +1,78 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Connect BCF Topics Geocoding API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geocoding",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Geocode an address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/Service.svc/geocode",
+            "params": [
+              {
+                "name": "addr",
+                "value": "1 Infinite Loop, Cupertino, CA 95014",
+                "type": "query",
+                "description": "Address to geocode (street, city, state/province, zip, country)"
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query",
+                "description": "Geographic region"
+              },
+              {
+                "name": "outputFormat",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Converts a street address or city/state/zip to geographic coordinates using Trimble's commercial vehicle map database."
+        },
+        {
+          "info": {
+            "name": "Reverse geocode coordinates to address",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/Service.svc/reverseGeocode",
+            "params": [
+              {
+                "name": "coords",
+                "value": "37.3318,-122.0312",
+                "type": "query",
+                "description": "Latitude and longitude as \"lat,lng\""
+              },
+              {
+                "name": "region",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Converts geographic coordinates (lat/lng) to a nearest street address."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

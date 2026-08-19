@@ -1,0 +1,122 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Trimble Connect BCF Topics Files API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List project files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "path",
+                "value": "/Models/Structural",
+                "type": "query",
+                "description": "Parent folder path"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns files and folders within a project directory."
+        },
+        {
+          "info": {
+            "name": "Upload a file to a project",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              }
+            ],
+            "body": {
+              "type": "multipart-form",
+              "data": [
+                {
+                  "name": "file",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "path",
+                  "type": "text",
+                  "value": ""
+                },
+                {
+                  "name": "description",
+                  "type": "text",
+                  "value": ""
+                }
+              ]
+            }
+          },
+          "docs": "Uploads a file to the specified project folder. Supports BIM model files (IFC, RVT, SKP, NWD, NWC), drawings (PDF, DWG), and documents."
+        },
+        {
+          "info": {
+            "name": "Get file metadata",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://app.connect.trimble.com/tc/api/2.0/projects/:projectId/files/:fileId",
+            "params": [
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "path",
+                "description": "Trimble Connect project UUID"
+              },
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Returns metadata for a specific file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

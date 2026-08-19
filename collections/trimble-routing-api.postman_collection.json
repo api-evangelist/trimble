@@ -1,0 +1,486 @@
+{
+  "item": [
+    {
+      "id": "109eef6a-27c0-4321-939e-6475f4631cd1",
+      "name": "Routing",
+      "description": {
+        "content": "Route calculation and optimization",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "453b9a63-bba7-45a4-8be8-4f7c4dfb5846",
+          "name": "Calculate a route between stops",
+          "request": {
+            "name": "Calculate a route between stops",
+            "description": {
+              "content": "Calculates an optimized route for commercial vehicles between multiple stops. Returns mileage, drive time, toll costs, and turn-by-turn directions optimized for truck dimensions, weight, and hazmat restrictions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "route"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stops",
+                  "value": "<string>",
+                  "description": "(Required) Semicolon-delimited list of stops in \"City,State\" or lat/lng format. Example: \"Dallas,TX;Chicago,IL;Detroit,MI\""
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleType",
+                  "value": "Truck"
+                },
+                {
+                  "disabled": false,
+                  "key": "routeType",
+                  "value": "Practical",
+                  "description": "Routing optimization type"
+                },
+                {
+                  "disabled": false,
+                  "key": "height",
+                  "value": "<number>",
+                  "description": "Vehicle height in feet"
+                },
+                {
+                  "disabled": false,
+                  "key": "weight",
+                  "value": "<number>",
+                  "description": "Vehicle weight in pounds"
+                },
+                {
+                  "disabled": false,
+                  "key": "length",
+                  "value": "<number>",
+                  "description": "Vehicle length in feet"
+                },
+                {
+                  "disabled": false,
+                  "key": "hazmat",
+                  "value": "None"
+                },
+                {
+                  "disabled": false,
+                  "key": "reportType",
+                  "value": "Mileage"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d27abfb9-b3c4-4e88-96fa-d0b61933ca80",
+              "name": "Route calculation results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"RouteReports\": [\n    {\n      \"ReportLines\": [\n        {\n          \"LegMiles\": 956.1709141034424,\n          \"LegHours\": 9998.128603216714,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"LegMiles\": 7199.608151186042,\n          \"LegHours\": 158.0985440961369,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ]\n    },\n    {\n      \"ReportLines\": [\n        {\n          \"LegMiles\": 6755.0223123741725,\n          \"LegHours\": 1561.8981710675594,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        },\n        {\n          \"LegMiles\": 199.1251292995233,\n          \"LegHours\": 6858.017943913792,\n          \"StartPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          },\n          \"EndPoint\": {\n            \"Address\": \"string\",\n            \"Coords\": {\n              \"Lat\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              },\n              \"Lon\": {\n                \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n              }\n            }\n          }\n        }\n      ]\n    }\n  ],\n  \"TMiles\": 3264.597475119785,\n  \"THours\": 5320.80272299515,\n  \"Tolls\": {\n    \"TotalCost\": 5949.550091091735,\n    \"Currency\": \"string\"\n  },\n  \"Directions\": [\n    {\n      \"Direction\": \"string\",\n      \"Distance\": 2190.7968153785328,\n      \"DriveTime\": \"string\",\n      \"RoadName\": \"string\",\n      \"State\": \"string\",\n      \"Coords\": {\n        \"Lat\": 12.306666060697466,\n        \"Lon\": -163.27239609002726\n      }\n    },\n    {\n      \"Direction\": \"string\",\n      \"Distance\": 8312.690305155362,\n      \"DriveTime\": \"string\",\n      \"RoadName\": \"string\",\n      \"State\": \"string\",\n      \"Coords\": {\n        \"Lat\": -3.1981441507837616,\n        \"Lon\": 105.84605964915198\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b2d9be0b-3a9e-4a93-a247-d4fd694ebb5d",
+              "name": "Invalid request parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Description\": \"string\",\n  \"ExceptionType\": \"string\",\n  \"StatusCode\": 9776\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4db5d9ab-1e17-4341-8547-1013cd81fb8e",
+              "name": "Invalid API key",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "route"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Chicago,IL"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "height",
+                      "value": "13.5"
+                    },
+                    {
+                      "key": "weight",
+                      "value": "80000"
+                    },
+                    {
+                      "key": "length",
+                      "value": "53"
+                    },
+                    {
+                      "key": "hazmat",
+                      "value": "None"
+                    },
+                    {
+                      "key": "reportType",
+                      "value": "Mileage"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9d36373f-2cd6-4761-8607-690b21f893d9",
+          "name": "Get mileage between stops",
+          "request": {
+            "name": "Get mileage between stops",
+            "description": {
+              "content": "Returns the calculated mileage and driving time between stops using PC*MILER routing logic. Supports both practical (highway-preferred) and shortest routing for commercial vehicles.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Service.svc",
+                "mileage"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "stops",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "vehicleType",
+                  "value": "Truck"
+                },
+                {
+                  "disabled": false,
+                  "key": "routeType",
+                  "value": "Practical"
+                },
+                {
+                  "disabled": false,
+                  "key": "outputFormat",
+                  "value": "json"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4777c9be-aff1-41c0-98aa-4fa4241098df",
+              "name": "Mileage results",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Service.svc",
+                    "mileage"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "stops",
+                      "value": "Dallas,TX;Houston,TX"
+                    },
+                    {
+                      "key": "vehicleType",
+                      "value": "Truck"
+                    },
+                    {
+                      "key": "routeType",
+                      "value": "Practical"
+                    },
+                    {
+                      "key": "outputFormat",
+                      "value": "json"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Mileage\": 2913.275008676277,\n  \"Hours\": 7345.7356183104985,\n  \"FuelCost\": 6894.166500120204,\n  \"RouteType\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d96feac4-17d0-4641-bacc-9afc9e1f91c1",
+    "name": "Trimble Connect BCF Topics Routing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

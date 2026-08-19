@@ -1,0 +1,545 @@
+{
+  "item": [
+    {
+      "id": "ff8fc0b4-c008-4a8b-94b8-0281f9a6fc3d",
+      "name": "BCF Topics",
+      "description": {
+        "content": "Building Collaboration Format issue tracking",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b88466b9-c999-4ad2-8dae-8d19a29aaea8",
+          "name": "List BCF topics (issues)",
+          "request": {
+            "name": "List BCF topics (issues)",
+            "description": {
+              "content": "Returns BIM Collaboration Format (BCF) topics for a project. BCF topics represent issues, clashes, comments, and design queries tied to specific locations or objects in BIM models.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "topicType",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "topicStatus",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "assignedTo",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f6383ac8-c0b0-4f06-94ca-4cde5526f89e",
+              "name": "List of BCF topics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "topicType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "topicStatus",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "assignedTo",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"topics\": [\n    {\n      \"guid\": \"43da95ef-89e6-d531-0e1f-6f861e6ffebd\",\n      \"topicType\": \"REQUEST_FOR_INFORMATION\",\n      \"topicStatus\": \"RESOLVED\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"priority\": \"HIGH\",\n      \"assignedTo\": \"string\",\n      \"dueDate\": \"1985-04-01\",\n      \"label\": \"string\",\n      \"createdDate\": \"1992-11-09T23:19:27.605Z\",\n      \"modifiedDate\": \"1999-09-19T12:49:21.438Z\",\n      \"creationAuthor\": \"string\",\n      \"modifiedAuthor\": \"string\",\n      \"viewpoints\": [\n        {\n          \"guid\": \"5d18ba6b-b779-879e-3656-1c9b1cc2323a\",\n          \"snapshotUrl\": \"https://ZLsHJPTnxVyZmRcjjw.lavYl+z,JCDyE63gMNnGalXwCPl4kp3XyKjAhYZdJFPhM5YHFiLt4A-,SdNAChKa2IBheN5nwDe\"\n        },\n        {\n          \"guid\": \"5b6b14e7-1af3-0168-2376-dd87eedd8ff8\",\n          \"snapshotUrl\": \"http://ajcAdulCXBkxrStZ.ctyTfKqlRY894V3LCSiguzaUgQbBU-.1tabpA74BjPQVOOGvad9aPjBbZ\"\n        }\n      ],\n      \"referenceLinks\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"guid\": \"1a72b616-6cb1-63fc-f638-e04f5049aeae\",\n      \"topicType\": \"REQUEST_FOR_INFORMATION\",\n      \"topicStatus\": \"OPEN\",\n      \"title\": \"string\",\n      \"description\": \"string\",\n      \"priority\": \"HIGH\",\n      \"assignedTo\": \"string\",\n      \"dueDate\": \"1991-05-11\",\n      \"label\": \"string\",\n      \"createdDate\": \"2021-12-26T23:17:09.172Z\",\n      \"modifiedDate\": \"1979-01-22T02:30:17.193Z\",\n      \"creationAuthor\": \"string\",\n      \"modifiedAuthor\": \"string\",\n      \"viewpoints\": [\n        {\n          \"guid\": \"9d33d1cb-ff97-5ec4-c2b6-766d14e230d2\",\n          \"snapshotUrl\": \"http://BMPLkujjDFTBLHOcNivPhMGJvIU.hdztLMsZPF\"\n        },\n        {\n          \"guid\": \"e2147d92-6f6f-0aa6-d35c-08edb79aea04\",\n          \"snapshotUrl\": \"http://Yja.lxxT6nv6Ju6o46dm+JFR6vAiJ5D.PnqliEc-l1DTEd-BNkZIbq7qB\"\n        }\n      ],\n      \"referenceLinks\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ],\n  \"totalCount\": 8151\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9a02ce8b-1879-4020-9ab8-ef8bd642a1fe",
+          "name": "Create a BCF topic",
+          "request": {
+            "name": "Create a BCF topic",
+            "description": {
+              "content": "Creates a new BCF topic (issue) in the project.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"topicType\": \"<string>\",\n  \"topicStatus\": \"OPEN\",\n  \"description\": \"<string>\",\n  \"priority\": \"NORMAL\",\n  \"assignedTo\": \"<string>\",\n  \"dueDate\": \"<date>\",\n  \"label\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a4127a56-ca84-4061-a0db-c4fb94987e18",
+              "name": "Topic created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"topicType\": \"<string>\",\n  \"topicStatus\": \"OPEN\",\n  \"description\": \"<string>\",\n  \"priority\": \"NORMAL\",\n  \"assignedTo\": \"<string>\",\n  \"dueDate\": \"<date>\",\n  \"label\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"0b38d9f2-7d3b-96b3-28ee-582d870af0ba\",\n  \"topicType\": \"COMMENT\",\n  \"topicStatus\": \"RESOLVED\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"priority\": \"LOW\",\n  \"assignedTo\": \"string\",\n  \"dueDate\": \"1971-01-02\",\n  \"label\": \"string\",\n  \"createdDate\": \"1959-09-11T13:21:51.767Z\",\n  \"modifiedDate\": \"1985-03-18T03:49:41.847Z\",\n  \"creationAuthor\": \"string\",\n  \"modifiedAuthor\": \"string\",\n  \"viewpoints\": [\n    {\n      \"guid\": \"bd28219f-0ae6-2a82-e439-2d8688423e7e\",\n      \"snapshotUrl\": \"https://jhDDBllSgbtqyyiRVH.taE7Yxs72cp4Wd8etrAs3,QyPvUGqhh2-Atsqf1qtobs+NRNfyICe1.SIPfnAY+soMssQyVxEd\"\n    },\n    {\n      \"guid\": \"1b39a322-79ba-ae0b-e9d3-12a30ff53e5b\",\n      \"snapshotUrl\": \"http://HlFreWslQTPyLxTMOjAo.rhBwRKKiLowAMgguc.09-z2XWyoea5JTBwD.GiqG8ZIXT0PJY3\"\n    }\n  ],\n  \"referenceLinks\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d43a960f-df44-4283-810d-39597bb11720",
+          "name": "Get a BCF topic",
+          "request": {
+            "name": "Get a BCF topic",
+            "description": {
+              "content": "Returns details for a specific BCF topic.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                ":topicGuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "topicGuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ead57588-f87a-4d28-a7bb-6df17ac6fbe9",
+              "name": "BCF topic details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    ":topicGuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "topicGuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"0b38d9f2-7d3b-96b3-28ee-582d870af0ba\",\n  \"topicType\": \"COMMENT\",\n  \"topicStatus\": \"RESOLVED\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"priority\": \"LOW\",\n  \"assignedTo\": \"string\",\n  \"dueDate\": \"1971-01-02\",\n  \"label\": \"string\",\n  \"createdDate\": \"1959-09-11T13:21:51.767Z\",\n  \"modifiedDate\": \"1985-03-18T03:49:41.847Z\",\n  \"creationAuthor\": \"string\",\n  \"modifiedAuthor\": \"string\",\n  \"viewpoints\": [\n    {\n      \"guid\": \"bd28219f-0ae6-2a82-e439-2d8688423e7e\",\n      \"snapshotUrl\": \"https://jhDDBllSgbtqyyiRVH.taE7Yxs72cp4Wd8etrAs3,QyPvUGqhh2-Atsqf1qtobs+NRNfyICe1.SIPfnAY+soMssQyVxEd\"\n    },\n    {\n      \"guid\": \"1b39a322-79ba-ae0b-e9d3-12a30ff53e5b\",\n      \"snapshotUrl\": \"http://HlFreWslQTPyLxTMOjAo.rhBwRKKiLowAMgguc.09-z2XWyoea5JTBwD.GiqG8ZIXT0PJY3\"\n    }\n  ],\n  \"referenceLinks\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0fdd5ab7-f4de-4de5-89ca-5ad2f1249a59",
+          "name": "Update a BCF topic",
+          "request": {
+            "name": "Update a BCF topic",
+            "description": {
+              "content": "Updates a BCF topic status, assignee, or other fields.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "topics",
+                ":topicGuid"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "projectId",
+                  "description": "(Required) Trimble Connect project UUID"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<uuid>",
+                  "key": "topicGuid",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"topicStatus\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"dueDate\": \"<date>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9b6af396-b3bf-49d4-834a-26a952885d55",
+              "name": "Topic updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "topics",
+                    ":topicGuid"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "projectId",
+                      "description": "(Required) Trimble Connect project UUID"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<uuid>",
+                      "key": "topicGuid",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"title\": \"<string>\",\n  \"description\": \"<string>\",\n  \"topicStatus\": \"<string>\",\n  \"priority\": \"<string>\",\n  \"assignedTo\": \"<string>\",\n  \"dueDate\": \"<date>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"guid\": \"0b38d9f2-7d3b-96b3-28ee-582d870af0ba\",\n  \"topicType\": \"COMMENT\",\n  \"topicStatus\": \"RESOLVED\",\n  \"title\": \"string\",\n  \"description\": \"string\",\n  \"priority\": \"LOW\",\n  \"assignedTo\": \"string\",\n  \"dueDate\": \"1971-01-02\",\n  \"label\": \"string\",\n  \"createdDate\": \"1959-09-11T13:21:51.767Z\",\n  \"modifiedDate\": \"1985-03-18T03:49:41.847Z\",\n  \"creationAuthor\": \"string\",\n  \"modifiedAuthor\": \"string\",\n  \"viewpoints\": [\n    {\n      \"guid\": \"bd28219f-0ae6-2a82-e439-2d8688423e7e\",\n      \"snapshotUrl\": \"https://jhDDBllSgbtqyyiRVH.taE7Yxs72cp4Wd8etrAs3,QyPvUGqhh2-Atsqf1qtobs+NRNfyICe1.SIPfnAY+soMssQyVxEd\"\n    },\n    {\n      \"guid\": \"1b39a322-79ba-ae0b-e9d3-12a30ff53e5b\",\n      \"snapshotUrl\": \"http://HlFreWslQTPyLxTMOjAo.rhBwRKKiLowAMgguc.09-z2XWyoea5JTBwD.GiqG8ZIXT0PJY3\"\n    }\n  ],\n  \"referenceLinks\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://app.connect.trimble.com/tc/api/2.0",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "90c60353-5e30-42f0-a9c7-4bcce61a74a9",
+    "name": "Trimble Connect BCF Topics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.\n\nContact Support:\n Name: Trimble Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
