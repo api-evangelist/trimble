@@ -169,6 +169,10 @@ apis:
   humanURL: https://developer.trimble.com/docs/authentication
   tags:
   - Authentication
+  - Identity
+  - Security
+  tags_raw:
+  - Authentication
   - OAuth 2.0
   - Identity
   - Security
@@ -207,6 +211,8 @@ apis:
   description: File and document management
   humanURL: https://developer.trimble.com/docs/connect
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -261,6 +267,8 @@ apis:
   description: Project management
   humanURL: https://developer.trimble.com/docs/connect
   tags:
+  - Project
+  tags_raw:
   - Projects
   properties:
   - type: OpenAPI
@@ -315,6 +323,8 @@ apis:
   description: User and team management
   humanURL: https://developer.trimble.com/docs/connect
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
