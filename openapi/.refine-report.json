@@ -1,24 +1,31 @@
 {
   "provider": "trimble",
   "sources": [
-    "trimble-bcf-topics-api-openapi.yml",
-    "trimble-files-api-openapi.yml",
-    "trimble-geocoding-api-openapi.yml",
-    "trimble-projects-api-openapi.yml",
-    "trimble-routing-api-openapi.yml",
-    "trimble-users-api-openapi.yml"
+    "_original/trimble-connect-openapi.yml",
+    "_original/trimble-maps-openapi.yml"
   ],
   "outputs": [
     "trimble-bcf-topics-api-openapi.yml",
     "trimble-files-api-openapi.yml",
-    "trimble-geocoding-api-openapi.yml",
     "trimble-projects-api-openapi.yml",
-    "trimble-routing-api-openapi.yml",
-    "trimble-users-api-openapi.yml"
+    "trimble-users-api-openapi.yml",
+    "trimble-geocoding-api-openapi.yml",
+    "trimble-routing-api-openapi.yml"
   ],
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "trimble-connect-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "trimble-maps-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0"
+  ],
+  "skipped": [
+    "trimble-bcf-topics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-files-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-geocoding-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-projects-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-routing-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "trimble-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

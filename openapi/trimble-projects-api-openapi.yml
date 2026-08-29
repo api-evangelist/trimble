@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Trimble Connect BCF Topics Projects API
+  title: Trimble Connect Projects API
   description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
   version: '2.0'
   contact:
@@ -110,6 +110,19 @@ paths:
                 $ref: '#/components/schemas/Project'
 components:
   schemas:
+    ProjectListResponse:
+      type: object
+      properties:
+        projects:
+          type: array
+          items:
+            $ref: '#/components/schemas/Project'
+        totalCount:
+          type: integer
+        page:
+          type: integer
+        pageSize:
+          type: integer
     ProjectUpdate:
       type: object
       properties:
@@ -182,19 +195,6 @@ components:
           - OTHER
         location:
           type: string
-    ProjectListResponse:
-      type: object
-      properties:
-        projects:
-          type: array
-          items:
-            $ref: '#/components/schemas/Project'
-        totalCount:
-          type: integer
-        page:
-          type: integer
-        pageSize:
-          type: integer
   parameters:
     ProjectId:
       name: projectId

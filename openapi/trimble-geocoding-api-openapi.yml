@@ -1,19 +1,18 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Trimble Connect BCF Topics Geocoding API
-  description: The Trimble Connect API enables integration with Trimble's cloud-based construction collaboration platform. Provides access to project data, BIM models, document management, issues (BCF Topics), and team collaboration features for construction project management. Trimble Connect acts as the BIM collaboration hub integrating Tekla, SketchUp, and third-party tools.
+  title: Trimble Maps Geocoding API
+  description: The Trimble Maps API (formerly ALK Technologies PC*MILER) provides interactive mapping and routing solutions optimized for commercial vehicles and transportation. Enables truck-specific routing, geocoding, map tile rendering, and turn-by-turn navigation services across North America, Europe, and global markets.
   version: '2.0'
   contact:
-    name: Trimble Developer Support
-    url: https://developer.trimble.com
-  license:
-    name: Trimble Developer Terms
-    url: https://www.trimble.com/legal/developer-terms
+    name: Trimble Maps Developer Support
+    url: https://maps.trimble.com
 servers:
-- url: https://app.connect.trimble.com/tc/api/2.0
-  description: Trimble Connect Production API
+- url: https://pcmiler.alk.com/apis/rest/v1.0
+  description: Trimble PC*MILER API v1 (North America)
+- url: https://maps.trimble.com/api/v1
+  description: Trimble Maps API v1
 security:
-- BearerAuth: []
+- ApiKeyHeader: []
 tags:
 - name: Geocoding
   description: Address and coordinate conversion
@@ -94,6 +93,32 @@ paths:
                 $ref: '#/components/schemas/AddressResponse'
 components:
   schemas:
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
+    AddressResponse:
+      type: object
+      properties:
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
     GeocodeResponse:
       type: object
       properties:
@@ -120,35 +145,9 @@ components:
           - Zip
           - State
           - Country
-    AddressResponse:
-      type: object
-      properties:
-        Address:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        Zip:
-          type: string
-        Country:
-          type: string
-        Coords:
-          $ref: '#/components/schemas/Coords'
-    Coords:
-      type: object
-      properties:
-        Lat:
-          type: number
-          minimum: -90
-          maximum: 90
-        Lon:
-          type: number
-          minimum: -180
-          maximum: 180
   securitySchemes:
-    BearerAuth:
-      type: http
-      scheme: bearer
-      bearerFormat: JWT
-      description: Trimble Identity OAuth2 Bearer token
+    ApiKeyHeader:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: 'Format: ALK apiKey'
