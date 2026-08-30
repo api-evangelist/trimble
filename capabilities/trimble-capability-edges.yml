@@ -1,0 +1,27 @@
+slug: trimble
+provider: Trimble
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Infrastructure
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: BCF Topics
+  spec_file: trimble-bcf-topics-api-openapi.yml
+  capability_id: BC-5060.10
+  capability_id_l1: BC-5060
+  capability_name: BIM Management
+  confidence: 0.7
+  evidence: '"List BCF topics (issues)" / "Create a BCF topic"; platform provides "access to project data,
+    BIM models, document management, issues (BCF Topics)" and "acts as the BIM collaboration hub integrating
+    Tekla, SketchUp"'
+  reason: BCF (BIM Collaboration Format) topics are model-coordination issues raised against BIM models,
+    which is BIM coordination across disciplines rather than generic issue tracking. Mapped to BIM Management
+    within Digital Engineering & Asset Information Management; some ambiguity versus Common Data Environment.

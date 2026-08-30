@@ -399,6 +399,9 @@ github:
     url: https://github.com/trimble-oss
     description: Trimble Open Source Software organization
 common:
+  - type: CapabilityMap
+    url: capabilities/trimble-capability-edges.yml
+    name: Trimble Business Capability Map
   - type: AgenticAccess
     url: agentic-access/trimble-agentic-access.yml
   - type: TrustCenter
