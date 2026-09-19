@@ -167,6 +167,11 @@ apis:
   tags:
   - Construction ERP
   - Accounting
+  - Human Resources
+  - Finance
+  tags_raw:
+  - Construction ERP
+  - Accounting
   - HR
   - Finance
   properties:
