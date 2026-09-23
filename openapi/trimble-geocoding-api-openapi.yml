@@ -93,17 +93,6 @@ paths:
                 $ref: '#/components/schemas/AddressResponse'
 components:
   schemas:
-    Coords:
-      type: object
-      properties:
-        Lat:
-          type: number
-          minimum: -90
-          maximum: 90
-        Lon:
-          type: number
-          minimum: -180
-          maximum: 180
     AddressResponse:
       type: object
       properties:
@@ -145,6 +134,17 @@ components:
           - Zip
           - State
           - Country
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
   securitySchemes:
     ApiKeyHeader:
       type: apiKey
