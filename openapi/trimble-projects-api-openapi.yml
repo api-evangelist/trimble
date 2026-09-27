@@ -110,38 +110,6 @@ paths:
                 $ref: '#/components/schemas/Project'
 components:
   schemas:
-    ProjectCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONSTRUCTION
-          - INFRASTRUCTURE
-          - ENGINEERING
-          - OTHER
-        location:
-          type: string
-    ProjectUpdate:
-      type: object
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        status:
-          type: string
-          enum:
-          - ACTIVE
-          - ARCHIVED
-        location:
-          type: string
     Project:
       type: object
       properties:
@@ -182,6 +150,20 @@ components:
           type: integer
         fileCount:
           type: integer
+    ProjectUpdate:
+      type: object
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        status:
+          type: string
+          enum:
+          - ACTIVE
+          - ARCHIVED
+        location:
+          type: string
     ProjectListResponse:
       type: object
       properties:
@@ -195,6 +177,24 @@ components:
           type: integer
         pageSize:
           type: integer
+    ProjectCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONSTRUCTION
+          - INFRASTRUCTURE
+          - ENGINEERING
+          - OTHER
+        location:
+          type: string
   parameters:
     ProjectId:
       name: projectId

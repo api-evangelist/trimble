@@ -364,67 +364,67 @@ apis:
     url: json-schema/trimble-route-schema.json
   - type: JSONStructure
     url: json-structure/trimble-route-structure.json
-- aid: trimble:trimble-navigation-catalyst-api
+- aid: trimble:trimble-catalyst-api
   name: Trimble Catalyst API
-  description: The Catalyst API from Trimble Navigation — 2 operation(s) for catalyst.
-  humanURL: https://developer.trimble.com/docs/mobile-manager/
+  description: The Catalyst API from Trimble — 2 operation(s) for catalyst.
+  humanURL: https://developer.trimble.com/docs/pc-miler
   tags:
   - Catalyst
   properties:
   - type: OpenAPI
-    url: openapi/trimble-navigation-catalyst-api-openapi.yml
+    url: openapi/trimble-catalyst-api-openapi.yml
   - type: Documentation
     url: https://developer.trimble.com/docs/mobile-manager/
   - type: GettingStarted
     url: https://developer.trimble.com/docs/mobile-manager/guides/integrate/
-- aid: trimble:trimble-navigation-corrections-api
+- aid: trimble:trimble-corrections-api
   name: Trimble Corrections API
-  description: The Corrections API from Trimble Navigation — 2 operation(s) for corrections.
-  humanURL: https://developer.trimble.com/docs/mobile-manager/
+  description: The Corrections API from Trimble — 2 operation(s) for corrections.
+  humanURL: https://developer.trimble.com/docs/pc-miler
   tags:
   - Corrections
   properties:
   - type: OpenAPI
-    url: openapi/trimble-navigation-corrections-api-openapi.yml
+    url: openapi/trimble-corrections-api-openapi.yml
   - type: Documentation
     url: https://developer.trimble.com/docs/mobile-manager/
   - type: GettingStarted
     url: https://developer.trimble.com/docs/mobile-manager/guides/integrate/
-- aid: trimble:trimble-navigation-positioning-api
+- aid: trimble:trimble-positioning-api
   name: Trimble Positioning API
-  description: The Positioning API from Trimble Navigation — 1 operation(s) for positioning.
-  humanURL: https://developer.trimble.com/docs/mobile-manager/
+  description: The Positioning API from Trimble — 1 operation(s) for positioning.
+  humanURL: https://developer.trimble.com/docs/pc-miler
   tags:
   - Positioning
   properties:
   - type: OpenAPI
-    url: openapi/trimble-navigation-positioning-api-openapi.yml
+    url: openapi/trimble-positioning-api-openapi.yml
   - type: Documentation
     url: https://developer.trimble.com/docs/mobile-manager/
   - type: GettingStarted
     url: https://developer.trimble.com/docs/mobile-manager/guides/integrate/
-- aid: trimble:trimble-navigation-receiver-api
+- aid: trimble:trimble-receiver-api
   name: Trimble Receiver API
-  description: The Receiver API from Trimble Navigation — 2 operation(s) for receiver.
-  humanURL: https://developer.trimble.com/docs/mobile-manager/
+  description: The Receiver API from Trimble — 2 operation(s) for receiver.
+  humanURL: https://developer.trimble.com/docs/pc-miler
   tags:
   - Receiver
   properties:
   - type: OpenAPI
-    url: openapi/trimble-navigation-receiver-api-openapi.yml
+    url: openapi/trimble-receiver-api-openapi.yml
   - type: Documentation
     url: https://developer.trimble.com/docs/mobile-manager/
   - type: GettingStarted
     url: https://developer.trimble.com/docs/mobile-manager/guides/integrate/
-- aid: trimble:trimble-navigation-system-api
+- aid: trimble:trimble-system-api
   name: Trimble System API
-  description: The System API from Trimble Navigation — 1 operation(s) for system.
-  humanURL: https://developer.trimble.com/docs/mobile-manager/
+  description: The System API from Trimble — 1 operation(s) for system.
+  humanURL: https://developer.trimble.com/docs/pc-miler
   tags:
   - System
   properties:
   - type: OpenAPI
-    url: openapi/trimble-navigation-system-api-openapi.yml
+    url: openapi/trimble-system-api-openapi.yml
   - type: Documentation
     url: https://developer.trimble.com/docs/mobile-manager/
   - type: GettingStarted
