@@ -93,21 +93,6 @@ paths:
                 $ref: '#/components/schemas/AddressResponse'
 components:
   schemas:
-    AddressResponse:
-      type: object
-      properties:
-        Address:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        Zip:
-          type: string
-        Country:
-          type: string
-        Coords:
-          $ref: '#/components/schemas/Coords'
     GeocodeResponse:
       type: object
       properties:
@@ -134,6 +119,21 @@ components:
           - Zip
           - State
           - Country
+    AddressResponse:
+      type: object
+      properties:
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
     Coords:
       type: object
       properties:

@@ -132,6 +132,15 @@ paths:
               schema:
                 $ref: '#/components/schemas/Topic'
 components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
   schemas:
     TopicUpdate:
       type: object
@@ -159,15 +168,6 @@ components:
         dueDate:
           type: string
           format: date
-    TopicListResponse:
-      type: object
-      properties:
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
-        totalCount:
-          type: integer
     Topic:
       type: object
       description: BCF topic (issue) in BIM Collaboration Format
@@ -234,6 +234,15 @@ components:
           type: array
           items:
             type: string
+    TopicListResponse:
+      type: object
+      properties:
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+        totalCount:
+          type: integer
     TopicCreate:
       type: object
       required:
@@ -274,15 +283,6 @@ components:
           format: date
         label:
           type: string
-  parameters:
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Trimble Connect project UUID
   securitySchemes:
     BearerAuth:
       type: http

@@ -36,6 +36,15 @@ paths:
                 $ref: '#/components/schemas/MemberListResponse'
 components:
   schemas:
+    MemberListResponse:
+      type: object
+      properties:
+        members:
+          type: array
+          items:
+            $ref: '#/components/schemas/Member'
+        totalCount:
+          type: integer
     Member:
       type: object
       properties:
@@ -55,15 +64,6 @@ components:
         joinedAt:
           type: string
           format: date-time
-    MemberListResponse:
-      type: object
-      properties:
-        members:
-          type: array
-          items:
-            $ref: '#/components/schemas/Member'
-        totalCount:
-          type: integer
   parameters:
     ProjectId:
       name: projectId

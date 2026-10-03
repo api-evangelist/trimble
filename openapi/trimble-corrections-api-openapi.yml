@@ -55,6 +55,33 @@ paths:
           description: Invalid configuration
 components:
   schemas:
+    CorrectionsConfig:
+      type: object
+      required:
+      - type
+      properties:
+        type:
+          type: string
+          enum:
+          - RTX
+          - RTK
+          - SBAS
+          - NTRIP
+          - None
+          description: Correction service type to configure
+        ntripHost:
+          type: string
+          description: NTRIP caster host (required for NTRIP type)
+        ntripPort:
+          type: integer
+          description: NTRIP caster port
+        ntripMountpoint:
+          type: string
+          description: NTRIP mountpoint
+        ntripUsername:
+          type: string
+        ntripPassword:
+          type: string
     CorrectionsStatus:
       type: object
       description: GNSS correction service status
@@ -83,33 +110,6 @@ components:
         provider:
           type: string
           description: Correction service provider name
-    CorrectionsConfig:
-      type: object
-      required:
-      - type
-      properties:
-        type:
-          type: string
-          enum:
-          - RTX
-          - RTK
-          - SBAS
-          - NTRIP
-          - None
-          description: Correction service type to configure
-        ntripHost:
-          type: string
-          description: NTRIP caster host (required for NTRIP type)
-        ntripPort:
-          type: integer
-          description: NTRIP caster port
-        ntripMountpoint:
-          type: string
-          description: NTRIP mountpoint
-        ntripUsername:
-          type: string
-        ntripPassword:
-          type: string
   securitySchemes:
     basicAuth:
       type: http

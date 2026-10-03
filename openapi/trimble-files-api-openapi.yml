@@ -106,6 +106,17 @@ paths:
                 $ref: '#/components/schemas/File'
 components:
   schemas:
+    FileListResponse:
+      type: object
+      properties:
+        files:
+          type: array
+          items:
+            $ref: '#/components/schemas/File'
+        totalCount:
+          type: integer
+        path:
+          type: string
     File:
       type: object
       properties:
@@ -146,17 +157,6 @@ components:
         thumbnailUrl:
           type: string
           format: uri
-    FileListResponse:
-      type: object
-      properties:
-        files:
-          type: array
-          items:
-            $ref: '#/components/schemas/File'
-        totalCount:
-          type: integer
-        path:
-          type: string
   parameters:
     ProjectId:
       name: projectId

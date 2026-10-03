@@ -150,6 +150,24 @@ components:
           type: integer
         fileCount:
           type: integer
+    ProjectCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONSTRUCTION
+          - INFRASTRUCTURE
+          - ENGINEERING
+          - OTHER
+        location:
+          type: string
     ProjectUpdate:
       type: object
       properties:
@@ -177,24 +195,6 @@ components:
           type: integer
         pageSize:
           type: integer
-    ProjectCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONSTRUCTION
-          - INFRASTRUCTURE
-          - ENGINEERING
-          - OTHER
-        location:
-          type: string
   parameters:
     ProjectId:
       name: projectId

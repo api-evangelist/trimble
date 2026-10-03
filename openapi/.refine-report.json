@@ -3,11 +3,11 @@
   "sources": [
     "_original/trimble-connect-openapi.yml",
     "_original/trimble-maps-openapi.yml",
-    "trimble-navigation-catalyst-api-openapi.yml",
-    "trimble-navigation-corrections-api-openapi.yml",
-    "trimble-navigation-positioning-api-openapi.yml",
-    "trimble-navigation-receiver-api-openapi.yml",
-    "trimble-navigation-system-api-openapi.yml"
+    "trimble-catalyst-api-openapi.yml",
+    "trimble-corrections-api-openapi.yml",
+    "trimble-positioning-api-openapi.yml",
+    "trimble-receiver-api-openapi.yml",
+    "trimble-system-api-openapi.yml"
   ],
   "outputs": [
     "trimble-bcf-topics-api-openapi.yml",
@@ -22,23 +22,20 @@
     "trimble-receiver-api-openapi.yml",
     "trimble-system-api-openapi.yml"
   ],
-  "archived": [
-    "deleted 5 superseded output(s) from the previous generation"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [
-    "trimble-navigation-catalyst-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/catalyst/licenses get, /api/v1/catalyst/licenses/activate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "trimble-navigation-corrections-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/corrections/configure post, /api/v1/corrections/status get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "trimble-navigation-positioning-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /api/v1/positionStream get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "trimble-navigation-receiver-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/receiver/info get, /api/v1/receiver/status get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
-    "trimble-navigation-system-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /api/v1/tmmInfo get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
+    "trimble-catalyst-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/catalyst/licenses get, /api/v1/catalyst/licenses/activate post); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "trimble-corrections-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/corrections/configure post, /api/v1/corrections/status get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "trimble-positioning-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /api/v1/positionStream get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "trimble-receiver-api-openapi.yml: previously refined output kept for 2 operation(s) no archived document covers (e.g. /api/v1/receiver/info get, /api/v1/receiver/status get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth.",
+    "trimble-system-api-openapi.yml: previously refined output kept for 1 operation(s) no archived document covers (e.g. /api/v1/tmmInfo get); its other 0 operation(s) came from the archive and were dropped from it. The archive is incomplete for this provider \u2014 re-harvest to restore _original/ as the full source of truth."
   ],
   "notes": [
     "sourced from openapi/_original/ (2 archived document(s)); previously refined output at the top level was skipped rather than re-split",
     "trimble-connect-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
     "trimble-maps-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
-    "superseded outputs removed: trimble-navigation-catalyst-api-openapi.yml, trimble-navigation-corrections-api-openapi.yml, trimble-navigation-positioning-api-openapi.yml, trimble-navigation-receiver-api-openapi.yml, trimble-navigation-system-api-openapi.yml",
-    "apis.yml register: written (+5 apis, 20 total)"
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "trimble-bcf-topics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
