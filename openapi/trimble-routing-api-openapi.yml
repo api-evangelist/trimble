@@ -168,44 +168,6 @@ paths:
                 $ref: '#/components/schemas/MileageResponse'
 components:
   schemas:
-    RouteLeg:
-      type: object
-      properties:
-        LegMiles:
-          type: number
-          description: Leg distance in miles
-        LegHours:
-          type: number
-          description: Leg drive time in hours
-        StartPoint:
-          $ref: '#/components/schemas/StopPoint'
-        EndPoint:
-          $ref: '#/components/schemas/StopPoint'
-    Coords:
-      type: object
-      properties:
-        Lat:
-          type: number
-          minimum: -90
-          maximum: 90
-        Lon:
-          type: number
-          minimum: -180
-          maximum: 180
-    MileageResponse:
-      type: object
-      properties:
-        Mileage:
-          type: number
-          description: Miles between stops
-        Hours:
-          type: number
-          description: Drive time in hours
-        FuelCost:
-          type: number
-          description: Estimated fuel cost in USD
-        RouteType:
-          type: string
     RouteResponse:
       type: object
       properties:
@@ -242,6 +204,33 @@ components:
           type: string
         Coords:
           $ref: '#/components/schemas/Coords'
+    RouteLeg:
+      type: object
+      properties:
+        LegMiles:
+          type: number
+          description: Leg distance in miles
+        LegHours:
+          type: number
+          description: Leg drive time in hours
+        StartPoint:
+          $ref: '#/components/schemas/StopPoint'
+        EndPoint:
+          $ref: '#/components/schemas/StopPoint'
+    MileageResponse:
+      type: object
+      properties:
+        Mileage:
+          type: number
+          description: Miles between stops
+        Hours:
+          type: number
+          description: Drive time in hours
+        FuelCost:
+          type: number
+          description: Estimated fuel cost in USD
+        RouteType:
+          type: string
     ErrorResponse:
       type: object
       properties:
@@ -251,6 +240,17 @@ components:
           type: string
         StatusCode:
           type: integer
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
     DirectionStep:
       type: object
       properties:

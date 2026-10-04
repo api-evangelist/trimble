@@ -132,15 +132,6 @@ paths:
               schema:
                 $ref: '#/components/schemas/Topic'
 components:
-  parameters:
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Trimble Connect project UUID
   schemas:
     TopicUpdate:
       type: object
@@ -168,6 +159,46 @@ components:
         dueDate:
           type: string
           format: date
+    TopicCreate:
+      type: object
+      required:
+      - title
+      - topicType
+      - topicStatus
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicType:
+          type: string
+          enum:
+          - ISSUE
+          - REQUEST_FOR_INFORMATION
+          - CLASH
+          - COMMENT
+          - TASK
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          default: OPEN
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+          default: NORMAL
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
     Topic:
       type: object
       description: BCF topic (issue) in BIM Collaboration Format
@@ -243,46 +274,15 @@ components:
             $ref: '#/components/schemas/Topic'
         totalCount:
           type: integer
-    TopicCreate:
-      type: object
-      required:
-      - title
-      - topicType
-      - topicStatus
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        topicType:
-          type: string
-          enum:
-          - ISSUE
-          - REQUEST_FOR_INFORMATION
-          - CLASH
-          - COMMENT
-          - TASK
-        topicStatus:
-          type: string
-          enum:
-          - OPEN
-          - IN_PROGRESS
-          default: OPEN
-        priority:
-          type: string
-          enum:
-          - CRITICAL
-          - HIGH
-          - NORMAL
-          - LOW
-          default: NORMAL
-        assignedTo:
-          type: string
-        dueDate:
-          type: string
-          format: date
-        label:
-          type: string
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
   securitySchemes:
     BearerAuth:
       type: http
