@@ -509,6 +509,8 @@ common:
     url: json-ld/trimble-context.jsonld
   - type: Integrations
     url: https://www.trimble.com/en/partners
+  - type: SpectralRules
+    url: https://github.com/trimble-oss/openapi-spectral-rules/blob/b2d1164182a2d1799f8e4cbf8089bf53b9077804/spectral.yaml
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
