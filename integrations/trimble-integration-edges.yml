@@ -1,0 +1,300 @@
+edges:
+- partner_name: Open Geospatial Consortium
+  partner: ogc
+  detected_by: sweep-geospatial.py
+  first_seen: '2026-10-14'
+  partner_match: register
+  type: register
+  direction: partner-built
+  channel: standard-directory
+  relationship: standard-participant
+  evidence: https://portal.ogc.org/public_ogc/compliance/implementing.php?org_match=Trimble%20corp
+  conformance:
+    organization: Trimble corp
+    domain: trimble.com
+    products: 5
+    compliant_specs: []
+    implementing_specs:
+    - City Geography Markup Language (CityGML) Encoding Standard 2.0
+    - LAS Specification 1.4 OGC Community Standard 1.4
+    - Web Feature Service (WFS) Implementation Specification 1.1.0
+    - Web Feature Service 1.0.0
+    - Web Feature Service 2.0 Interface Standard (also ISO 19142) 2.0
+    - Web Map Service (WMS) Implementation Specification 1.3.0
+    - Web Map Service 1.1.1
+    - Web Map Service Client (WMS) Implementation Specification 1.3.0
+    - Web Map Tile Service Implementation Standard 1.0.0
+    products_list:
+    - name: Trimble Locus
+      version: '17.1'
+      type: Client and Server
+      pid: '1572'
+      valid_until: null
+      compliant: []
+    - name: Trimble NIS
+      version: '19.1'
+      type: Client and Server
+      pid: '1573'
+      valid_until: null
+      compliant: []
+    - name: Trimble RealWorks
+      version: '11.1'
+      type: Client (Desktop, Mobile, or Web)
+      pid: '1574'
+      valid_until: null
+      compliant: []
+    - name: Trimble Unity
+      version: '6.75'
+      type: Client and Server
+      pid: '1575'
+      valid_until: null
+      compliant: []
+    - name: Trimble VisionLink
+      version: .
+      type: Client (Desktop, Mobile, or Web)
+      pid: '1576'
+      valid_until: null
+      compliant: []
+  match:
+    method: domain+name-among-holders
+    domain: trimble.com
+  contract_reference:
+    register: portal.ogc.org/public_ogc/compliance
+    spec_file: null
+    role: implementation-registration
+    registered_name: Trimble corp
+    register_id: Trimble corp
+    detected_by: sweep-geospatial.py
+    detected: '2026-10-14'
+- partner_name: Autodesk Forma
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/autodesk-forma
+  category: Project Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Account Admin
+  - Data Management
+  - Files
+  - Relationships
+  - Rfis
+  - Submittals
+- partner_name: AWS S3
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/amazon-s3
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - AWS S3 -
+- partner_name: BambooHR
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/bamboohr
+  category: HR Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - BambooHR -
+- partner_name: Foundation Software
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/foundation-software
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - General Ledger
+  - Job Cost
+  - Purchase Order
+- partner_name: Google Drive
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/google-drive
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Google Drive Files
+- partner_name: Intuit Quickbooks Online
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/intuit-quickbooks
+  category: Expense Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Intuit Quickbooks Online
+- partner_name: Microsoft Power BI
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/power-bi
+  category: Reporting & BI
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Microsoft Power BI
+- partner_name: Procore
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/procore
+  category: Project Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Procore -
+- partner_name: S/FTP Connector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/s-ftp-connector
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Beta
+- partner_name: Sage 100
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/sage-100-contractor
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - Accounts Receivable
+  - Document Management
+  - Equipment Management
+  - Payroll
+  - Project Management
+- partner_name: Sage 300
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/sage-300-cre
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - Equipment Control
+  - General Ledger
+  - Job Cost
+  - Payroll
+  - Project Management
+  - XML API
+- partner_name: SalesForce
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/salesforce
+  category: Sales & CRM
+  detected_by: sweep-construction.py
+  detected: '2026-10-14'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - CRM
+  - Identity
+- partner_name: Procore (own)
+  partner: procore
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.procore.com/apps/trimble-projectsight
+  mirror_of: procore/integrations/procore-integration-edges.yml
+  apps:
+  - Trimble - ProjectSight
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Document Management; Field Communications; IT
+generated: '2026-10-14'
+method: searched
+checked:
+- https://appxchange.trimble.com/connectors
+- procore/integrations/procore-integration-edges.yml
+marketplace_apps:
+- marketplace: connector-coverage-list
+  channel: provider-built
+  app: trimble
+  url: https://appxchange.trimble.com/connectors
+  app_count: 12
+  adapter: sweep-construction.py:trimble-app-xchange
+  listed: 12
+source:
+- procore/integrations/procore-integration-edges.yml
