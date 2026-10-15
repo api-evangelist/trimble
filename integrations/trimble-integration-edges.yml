@@ -266,23 +266,6 @@ edges:
   operations:
   - CRM
   - Identity
-- partner_name: Procore (own)
-  partner: procore
-  partner_match: mirror
-  mirror_match: domain+name-among-holders
-  type: marketplace
-  relationship: platform-app
-  direction: third-party
-  channel: partner-built
-  marketplace: own
-  evidence: https://marketplace.procore.com/apps/trimble-projectsight
-  mirror_of: procore/integrations/procore-integration-edges.yml
-  apps:
-  - Trimble - ProjectSight
-  listing_count: 1
-  detected: '2026-10-14'
-  detected_by: mirror-platform-listings.py
-  category: Document Management; Field Communications; IT
 - partner_name: Open Robotics (ROS package index)
   partner: null
   partner_match: register
@@ -312,6 +295,23 @@ edges:
     detected: '2026-10-15'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
+- partner_name: Procore (own)
+  partner: procore
+  partner_match: mirror
+  mirror_match: domain+name-among-holders
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://marketplace.procore.com/apps/trimble-projectsight
+  mirror_of: procore/integrations/procore-integration-edges.yml
+  apps:
+  - Trimble - ProjectSight
+  listing_count: 1
+  detected: '2026-10-14'
+  detected_by: mirror-platform-listings.py
+  category: Document Management; Field Communications; IT
 generated: '2026-10-14'
 method: searched
 checked:

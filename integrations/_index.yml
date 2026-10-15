@@ -154,19 +154,6 @@
   relationship: system-coverage
   status: not-a-workflow
   arazzo: null
-- slug: trimble-procore-own
-  label: Procore (own)
-  partner: procore
-  partner_name: Procore (own)
-  category: Document Management; Field Communications; IT
-  type: marketplace
-  marketplace: own
-  channel: partner-built
-  evidence: https://marketplace.procore.com/apps/trimble-projectsight
-  source: edge
-  relationship: platform-app
-  status: not-a-workflow
-  arazzo: null
 - slug: trimble-open-robotics-ros-package-index
   label: Open Robotics (ROS package index)
   partner_name: Open Robotics (ROS package index)
@@ -194,5 +181,18 @@
     signal_note: 'participation only: packages/distros are context, never read'
     detected_by: sweep-industrial-robotics.py
     detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
+- slug: trimble-procore-own
+  label: Procore (own)
+  partner: procore
+  partner_name: Procore (own)
+  category: Document Management; Field Communications; IT
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://marketplace.procore.com/apps/trimble-projectsight
+  source: edge
+  relationship: platform-app
   status: not-a-workflow
   arazzo: null
