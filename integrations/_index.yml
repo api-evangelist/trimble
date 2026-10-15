@@ -167,3 +167,32 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: trimble-open-robotics-ros-package-index
+  label: Open Robotics (ROS package index)
+  partner_name: Open Robotics (ROS package index)
+  category: ROS packages
+  type: register
+  channel: standard-directory
+  evidence: https://github.com/trimble-oss/trimble_driver_ros.git
+  source: edge
+  relationship: standard-participant
+  contract_reference:
+    register: ROS 2 rosdistro (repo.ros2.org/rosdistro_cache)
+    spec_file: null
+    standard: ROS 2
+    role: ros-package-maintainer
+    matched_domain: trimble.com
+    matched_by: domain+name-among-holders
+    source_owner: trimble-oss
+    distros:
+    - jazzy
+    packages: 3
+    sample_packages:
+    - trimble_driver
+    - trimble_gsof_msgs
+    - trimble_interfaces
+    signal_note: 'participation only: packages/distros are context, never read'
+    detected_by: sweep-industrial-robotics.py
+    detected: '2026-10-15'
+  status: not-a-workflow
+  arazzo: null
