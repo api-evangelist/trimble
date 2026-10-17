@@ -119,6 +119,24 @@ components:
         format: uuid
       description: Trimble Connect project UUID
   schemas:
+    ProjectCreate:
+      type: object
+      required:
+      - name
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        type:
+          type: string
+          enum:
+          - CONSTRUCTION
+          - INFRASTRUCTURE
+          - ENGINEERING
+          - OTHER
+        location:
+          type: string
     Project:
       type: object
       properties:
@@ -186,24 +204,6 @@ components:
           type: integer
         pageSize:
           type: integer
-    ProjectCreate:
-      type: object
-      required:
-      - name
-      properties:
-        name:
-          type: string
-        description:
-          type: string
-        type:
-          type: string
-          enum:
-          - CONSTRUCTION
-          - INFRASTRUCTURE
-          - ENGINEERING
-          - OTHER
-        location:
-          type: string
   securitySchemes:
     BearerAuth:
       type: http

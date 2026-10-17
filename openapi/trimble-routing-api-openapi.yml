@@ -168,42 +168,17 @@ paths:
                 $ref: '#/components/schemas/MileageResponse'
 components:
   schemas:
-    RouteResponse:
+    Coords:
       type: object
       properties:
-        RouteReports:
-          type: array
-          items:
-            type: object
-            properties:
-              ReportLines:
-                type: array
-                items:
-                  $ref: '#/components/schemas/RouteLeg'
-        TMiles:
+        Lat:
           type: number
-          description: Total route miles
-        THours:
+          minimum: -90
+          maximum: 90
+        Lon:
           type: number
-          description: Total drive hours
-        Tolls:
-          type: object
-          properties:
-            TotalCost:
-              type: number
-            Currency:
-              type: string
-        Directions:
-          type: array
-          items:
-            $ref: '#/components/schemas/DirectionStep'
-    StopPoint:
-      type: object
-      properties:
-        Address:
-          type: string
-        Coords:
-          $ref: '#/components/schemas/Coords'
+          minimum: -180
+          maximum: 180
     RouteLeg:
       type: object
       properties:
@@ -240,17 +215,6 @@ components:
           type: string
         StatusCode:
           type: integer
-    Coords:
-      type: object
-      properties:
-        Lat:
-          type: number
-          minimum: -90
-          maximum: 90
-        Lon:
-          type: number
-          minimum: -180
-          maximum: 180
     DirectionStep:
       type: object
       properties:
@@ -266,6 +230,42 @@ components:
           type: string
         Coords:
           $ref: '#/components/schemas/Coords'
+    StopPoint:
+      type: object
+      properties:
+        Address:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+    RouteResponse:
+      type: object
+      properties:
+        RouteReports:
+          type: array
+          items:
+            type: object
+            properties:
+              ReportLines:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RouteLeg'
+        TMiles:
+          type: number
+          description: Total route miles
+        THours:
+          type: number
+          description: Total drive hours
+        Tolls:
+          type: object
+          properties:
+            TotalCost:
+              type: number
+            Currency:
+              type: string
+        Directions:
+          type: array
+          items:
+            $ref: '#/components/schemas/DirectionStep'
   securitySchemes:
     ApiKeyHeader:
       type: apiKey

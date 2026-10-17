@@ -132,73 +132,25 @@ paths:
               schema:
                 $ref: '#/components/schemas/Topic'
 components:
+  parameters:
+    ProjectId:
+      name: projectId
+      in: path
+      required: true
+      schema:
+        type: string
+        format: uuid
+      description: Trimble Connect project UUID
   schemas:
-    TopicUpdate:
+    TopicListResponse:
       type: object
       properties:
-        title:
-          type: string
-        description:
-          type: string
-        topicStatus:
-          type: string
-          enum:
-          - OPEN
-          - IN_PROGRESS
-          - RESOLVED
-          - CLOSED
-        priority:
-          type: string
-          enum:
-          - CRITICAL
-          - HIGH
-          - NORMAL
-          - LOW
-        assignedTo:
-          type: string
-        dueDate:
-          type: string
-          format: date
-    TopicCreate:
-      type: object
-      required:
-      - title
-      - topicType
-      - topicStatus
-      properties:
-        title:
-          type: string
-        description:
-          type: string
-        topicType:
-          type: string
-          enum:
-          - ISSUE
-          - REQUEST_FOR_INFORMATION
-          - CLASH
-          - COMMENT
-          - TASK
-        topicStatus:
-          type: string
-          enum:
-          - OPEN
-          - IN_PROGRESS
-          default: OPEN
-        priority:
-          type: string
-          enum:
-          - CRITICAL
-          - HIGH
-          - NORMAL
-          - LOW
-          default: NORMAL
-        assignedTo:
-          type: string
-        dueDate:
-          type: string
-          format: date
-        label:
-          type: string
+        topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/Topic'
+        totalCount:
+          type: integer
     Topic:
       type: object
       description: BCF topic (issue) in BIM Collaboration Format
@@ -265,24 +217,72 @@ components:
           type: array
           items:
             type: string
-    TopicListResponse:
+    TopicUpdate:
       type: object
       properties:
-        topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/Topic'
-        totalCount:
-          type: integer
-  parameters:
-    ProjectId:
-      name: projectId
-      in: path
-      required: true
-      schema:
-        type: string
-        format: uuid
-      description: Trimble Connect project UUID
+        title:
+          type: string
+        description:
+          type: string
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - RESOLVED
+          - CLOSED
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+    TopicCreate:
+      type: object
+      required:
+      - title
+      - topicType
+      - topicStatus
+      properties:
+        title:
+          type: string
+        description:
+          type: string
+        topicType:
+          type: string
+          enum:
+          - ISSUE
+          - REQUEST_FOR_INFORMATION
+          - CLASH
+          - COMMENT
+          - TASK
+        topicStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          default: OPEN
+        priority:
+          type: string
+          enum:
+          - CRITICAL
+          - HIGH
+          - NORMAL
+          - LOW
+          default: NORMAL
+        assignedTo:
+          type: string
+        dueDate:
+          type: string
+          format: date
+        label:
+          type: string
   securitySchemes:
     BearerAuth:
       type: http

@@ -93,6 +93,32 @@ paths:
                 $ref: '#/components/schemas/AddressResponse'
 components:
   schemas:
+    AddressResponse:
+      type: object
+      properties:
+        Address:
+          type: string
+        City:
+          type: string
+        State:
+          type: string
+        Zip:
+          type: string
+        Country:
+          type: string
+        Coords:
+          $ref: '#/components/schemas/Coords'
+    Coords:
+      type: object
+      properties:
+        Lat:
+          type: number
+          minimum: -90
+          maximum: 90
+        Lon:
+          type: number
+          minimum: -180
+          maximum: 180
     GeocodeResponse:
       type: object
       properties:
@@ -119,32 +145,6 @@ components:
           - Zip
           - State
           - Country
-    Coords:
-      type: object
-      properties:
-        Lat:
-          type: number
-          minimum: -90
-          maximum: 90
-        Lon:
-          type: number
-          minimum: -180
-          maximum: 180
-    AddressResponse:
-      type: object
-      properties:
-        Address:
-          type: string
-        City:
-          type: string
-        State:
-          type: string
-        Zip:
-          type: string
-        Country:
-          type: string
-        Coords:
-          $ref: '#/components/schemas/Coords'
   securitySchemes:
     ApiKeyHeader:
       type: apiKey
