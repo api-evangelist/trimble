@@ -1,4 +1,204 @@
 edges:
+- partner_name: Autodesk Forma
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/autodesk-forma
+  category: Project Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Account Admin
+  - Data Management
+  - Files
+  - Relationships
+  - Rfis
+  - Submittals
+- partner_name: AWS S3
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/amazon-s3
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - AWS S3 -
+- partner_name: BambooHR
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/bamboohr
+  category: HR Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - BambooHR -
+- partner_name: Foundation Software
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/foundation-software
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - General Ledger
+  - Job Cost
+  - Purchase Order
+- partner_name: Google Drive
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/google-drive
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Google Drive Files
+- partner_name: Intuit Quickbooks Online
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/intuit-quickbooks
+  category: Expense Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Intuit Quickbooks Online
+- partner_name: Microsoft Power BI
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/power-bi
+  category: Reporting & BI
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Microsoft Power BI
+- partner_name: Procore
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/procore
+  category: Project Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Procore -
+- partner_name: S/FTP Connector
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/s-ftp-connector
+  category: Document Management
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Beta
+- partner_name: Sage 100
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/sage-100-contractor
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - Accounts Receivable
+  - Document Management
+  - Equipment Management
+  - Payroll
+  - Project Management
+- partner_name: Sage 300
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/sage-300-cre
+  category: ERP
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - Accounts Payable
+  - Equipment Control
+  - General Ledger
+  - Job Cost
+  - Payroll
+  - Project Management
+  - XML API
+- partner_name: SalesForce
+  partner: null
+  partner_match: null
+  partner_candidate: null
+  type: coverage
+  channel: provider-built
+  relationship: system-coverage
+  direction: provider-built
+  evidence: https://appxchange.trimble.com/connectors/salesforce
+  category: Sales & CRM
+  detected_by: sweep-construction.py
+  detected: '2026-10-19'
+  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
+  operations:
+  - CRM
+  - Identity
 - partner_name: Open Geospatial Consortium
   partner: ogc
   detected_by: sweep-geospatial.py
@@ -65,207 +265,7 @@ edges:
     registered_name: Trimble corp
     register_id: Trimble corp
     detected_by: sweep-geospatial.py
-    detected: '2026-10-14'
-- partner_name: Autodesk Forma
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/autodesk-forma
-  category: Project Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Account Admin
-  - Data Management
-  - Files
-  - Relationships
-  - Rfis
-  - Submittals
-- partner_name: AWS S3
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/amazon-s3
-  category: Document Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - AWS S3 -
-- partner_name: BambooHR
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/bamboohr
-  category: HR Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - BambooHR -
-- partner_name: Foundation Software
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/foundation-software
-  category: ERP
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Accounts Payable
-  - General Ledger
-  - Job Cost
-  - Purchase Order
-- partner_name: Google Drive
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/google-drive
-  category: Document Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Google Drive Files
-- partner_name: Intuit Quickbooks Online
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/intuit-quickbooks
-  category: Expense Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Intuit Quickbooks Online
-- partner_name: Microsoft Power BI
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/power-bi
-  category: Reporting & BI
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Microsoft Power BI
-- partner_name: Procore
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/procore
-  category: Project Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Procore -
-- partner_name: S/FTP Connector
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/s-ftp-connector
-  category: Document Management
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Beta
-- partner_name: Sage 100
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/sage-100-contractor
-  category: ERP
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Accounts Payable
-  - Accounts Receivable
-  - Document Management
-  - Equipment Management
-  - Payroll
-  - Project Management
-- partner_name: Sage 300
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/sage-300-cre
-  category: ERP
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - Accounts Payable
-  - Equipment Control
-  - General Ledger
-  - Job Cost
-  - Payroll
-  - Project Management
-  - XML API
-- partner_name: SalesForce
-  partner: null
-  partner_match: null
-  partner_candidate: null
-  type: coverage
-  channel: provider-built
-  relationship: system-coverage
-  direction: provider-built
-  evidence: https://appxchange.trimble.com/connectors/salesforce
-  category: Sales & CRM
-  detected_by: sweep-construction.py
-  detected: '2026-10-14'
-  partner_note: 'the connector page names the system, never its domain: unlinked under the domain rule'
-  operations:
-  - CRM
-  - Identity
+    detected: '2026-10-19'
 - partner_name: Open Robotics (ROS package index)
   partner: null
   partner_match: register
@@ -292,11 +292,11 @@ edges:
     - trimble_interfaces
     signal_note: 'participation only: packages/distros are context, never read'
     detected_by: sweep-industrial-robotics.py
-    detected: '2026-10-15'
+    detected: '2026-10-19'
   detected_by: sweep-industrial-robotics.py
   first_seen: '2026-10-15'
-- partner_name: Procore (own)
-  partner: procore
+- partner_name: Autodesk (own)
+  partner: autodesk
   partner_match: mirror
   mirror_match: domain+name-among-holders
   type: marketplace
@@ -304,17 +304,45 @@ edges:
   direction: third-party
   channel: partner-built
   marketplace: own
-  evidence: https://marketplace.procore.com/apps/trimble-projectsight
-  mirror_of: procore/integrations/procore-integration-edges.yml
+  evidence: https://marketplace.autodesk.com/apps/3003d920-aea5-4d24-ae15-ef605af53ad1
+  mirror_of: autodesk/integrations/autodesk-integration-edges.yml
   apps:
-  - Trimble - ProjectSight
+  - Trimble® Connect® Integrator for Autodesk® Forma®
   listing_count: 1
-  detected: '2026-10-14'
+  detected: '2026-10-19'
   detected_by: mirror-platform-listings.py
-  category: Document Management; Field Communications; IT
+  category: ACCBD5K/BIM360/BM36DP
+- partner_name: AEF (Agricultural Industry Electronics Foundation) members
+  partner: null
+  partner_match: register-name
+  type: register
+  direction: partner-built
+  evidence: https://www.aef-online.org/membership/memberlist.html
+  category: ISOBUS / agricultural electronics
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: AEF member list (aef-online.org/membership/memberlist.html)
+    spec_file: null
+    standard: ISOBUS (ISO 11783) / AEF
+    role: aef-member
+    registered_name: Trimble Inc.
+    country: United States
+    website: null
+    matched_domain: null
+    matched_by: register-name
+    identity_note: register-name 'trimble' = trimble; wikidata P856 trimble.com agrees or unheld
+    signal_note: 'participation only: membership is not ISOBUS conformance (the AEF certified-product database is
+      behind a login)'
+    detected_by: sweep-agriculture-food.py
+    detected: '2026-10-20'
+    identity_source: register-name
+  detected_by: sweep-agriculture-food.py
+  first_seen: '2026-10-20'
 generated: '2026-10-14'
 method: searched
 checked:
+- autodesk/integrations/autodesk-integration-edges.yml
 - https://appxchange.trimble.com/connectors
 - https://marketplace.odva.org/organizations
 - https://opcfoundation.org/products/
@@ -322,7 +350,10 @@ checked:
 - https://repo.ros2.org/rosdistro_cache/jazzy-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/kilted-cache.yaml.gz
 - https://repo.ros2.org/rosdistro_cache/rolling-cache.yaml.gz
-- procore/integrations/procore-integration-edges.yml
+- https://aggateway.org/AboutUs/Members.aspx
+- https://agrirouter.com/en/solutions
+- https://climate.com/en-us/partners.html
+- https://www.aef-online.org/membership/memberlist.html
 marketplace_apps:
 - marketplace: connector-coverage-list
   channel: provider-built
@@ -332,4 +363,4 @@ marketplace_apps:
   adapter: sweep-construction.py:trimble-app-xchange
   listed: 12
 source:
-- procore/integrations/procore-integration-edges.yml
+- autodesk/integrations/autodesk-integration-edges.yml
