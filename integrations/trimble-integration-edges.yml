@@ -364,6 +364,106 @@ edges:
     detected: '2026-10-21'
   detected_by: sweep-uk-g-cloud-suppliers.py
   first_seen: '2026-10-21'
+- partner_name: FMCSA registered Electronic Logging Devices (self-certified ELD list + revoked devices)
+  partner: null
+  partner_match: register
+  type: register
+  channel: regulator-register
+  relationship: standard-participant
+  direction: partner-built
+  evidence: https://eld.fmcsa.dot.gov/List/Index
+  category: US FMCSA Electronic Logging Device registration (hours of service)
+  contract_reference:
+    register: FMCSA registered Electronic Logging Devices (self-certified ELD list + revoked devices)
+    standard: FMCSA ELD technical specifications (49 CFR Part 395 Subpart B, Appendix A)
+    spec_file: null
+    role: eld-manufacturer
+    registered_name: Trimble Oil and Gas Services
+    matched_domain: trimble.com
+    matched_by: domain+name-among-holders
+    eld_status: active
+    certified_products:
+    - product: Electronic Logging Device
+      product_type: Electronic Logging Device
+      standard: FMCSA ELD technical specifications (49 CFR Part 395 Subpart B, Appendix A)
+      lapsed: false
+      self_certified: true
+    devices:
+    - device: Trimble Oil & Gas - Android ELD v2.0
+      model: 5531+TabActive2
+      eld_identifier: TOGS02
+      status: active
+    - device: Trimble Oil and Gas ELD - Android
+      model: 5530+EnergyTablet
+      eld_identifier: TOGS01
+      status: active
+    - device: MiX ELD Driver Logs
+      model: MDL1
+      eld_identifier: MDL001
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 12-08-2023
+    - device: Trimble FieldMaster Logs
+      model: FML001 (TVG 670 & TDI 600)
+      eld_identifier: FML001
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 07-06-2022
+    - device: Trimble FieldMaster Logs
+      model: FML002 (TVG 850 & Samsung)
+      eld_identifier: FML002
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 07-06-2022
+    - device: Trimble FieldMaster Logs
+      model: FML003 (TVG 675 & Android tablet)
+      eld_identifier: FML003
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 07-06-2022
+    - device: Trimble Oil & Gas - WinCE ELD
+      model: 5531+PD4
+      eld_identifier: TOGS03
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 04-29-2022
+    - device: Trimble PULSE Driver Logs
+      model: TPDL001 (TVG670 and Android tablet)
+      eld_identifier: PDL001
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 05-19-2025
+    - device: Trimble PULSE Driver Logs
+      model: TPDL003 (TVG850 and Android tablet)
+      eld_identifier: PDL003
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 05-19-2025
+    - device: Trimble PULSE Driver Logs
+      model: TPDL002 (TVG675 and Android tablet)
+      eld_identifier: PDL002
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 05-19-2025
+    - device: Trimble TrimFleet Mobile TVG850
+      model: TFM001 (TVG 850 & Samsung or TCT Display)
+      eld_identifier: TFM001
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 07-06-2022
+    - device: Trimble TrimFleet Mobile TVG950
+      model: TFM002 (TVG 950 & Samsung or TCT Display)
+      eld_identifier: TFM002
+      status: revoked
+      revocation: Self Revoked
+      revocation_date: 07-06-2022
+    signal_note: 'certified_products = one entry for the ELD product type, SELF-certified by the manufacturer against
+      the FMCSA technical specifications (lapsed: true when every listed device is revoked); device rows are context,
+      never counted'
+    detected_by: sweep-fmcsa-eld-registered-devices.py
+    detected: '2026-10-22'
+  detected_by: sweep-fmcsa-eld-registered-devices.py
+  first_seen: '2026-10-22'
 generated: '2026-10-14'
 method: searched
 checked:
@@ -383,6 +483,8 @@ checked:
 - https://www.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/suppliers
 - https://www.crowncommercial.gov.uk/agreements
 - https://www.ncsc.gov.uk/cyberessentials/search
+- https://eld.fmcsa.dot.gov/List/GetListOfELDs?listType=Revoked
+- https://eld.fmcsa.dot.gov/List/Index
 marketplace_apps:
 - marketplace: connector-coverage-list
   channel: provider-built
